@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -72,10 +73,12 @@
     margin-bottom: 22px;
   }
   .brand .logo {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     margin: 0 auto 6px;
     display: block;
+    object-fit: contain;
+    filter: contrast(1.05);
   }
   .brand h1 {
     font-size: 38px;
@@ -280,17 +283,8 @@
 
       <!-- Brand -->
       <header class="brand">
-        <!-- Inline SVG leaf logo to avoid external file -->
-        <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="50" cy="50" r="46" fill="none" stroke="#2a2a2a" stroke-width="2"/>
-          <path d="M50 18 C30 36, 30 58, 50 80 C70 58, 70 36, 50 18 Z"
-                fill="none" stroke="#2a2a2a" stroke-width="2"/>
-          <path d="M50 22 L50 78" stroke="#2a2a2a" stroke-width="1.5"/>
-          <path d="M50 38 Q42 44 38 52" fill="none" stroke="#2a2a2a" stroke-width="1.2"/>
-          <path d="M50 38 Q58 44 62 52" fill="none" stroke="#2a2a2a" stroke-width="1.2"/>
-          <path d="M50 54 Q42 60 40 68" fill="none" stroke="#2a2a2a" stroke-width="1.2"/>
-          <path d="M50 54 Q58 60 60 68" fill="none" stroke="#2a2a2a" stroke-width="1.2"/>
-        </svg>
+        <!-- SORA ZEN brand mark -->
+        <img class="logo" src="sora-zen-logo.png" alt="SORA ZEN logo">
         <h1>SORA&nbsp;&nbsp;ZEN</h1>
         <div class="subtitle">Lunch Menu &nbsp;|&nbsp; 11:00 – 15:00</div>
       </header>
