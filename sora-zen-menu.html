@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
+<title>SORA ZEN · Lunch Menu</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #2a2a2a;
+    --ink-soft: #555;
+    --line: #1f1f1f;
+    --accent: #6b8e23;
+    --paper: #f3efe6;
+    --paper-edge: #e8e2d4;
+    --halo: #c9b27a;
+  }
+
+  html, body {
+    background: #d8d3c6;
+    font-family: "Times New Roman", "Noto Serif TC", "Source Han Serif TC", "Songti TC", serif;
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 32px 22px 56px;
+    background:
+      radial-gradient(circle at 20% 10%, rgba(255,255,255,0.45), transparent 50%),
+      radial-gradient(circle at 85% 30%, rgba(0,0,0,0.04), transparent 55%),
+      radial-gradient(circle at 50% 90%, rgba(0,0,0,0.06), transparent 60%),
+      var(--paper);
+    background-blend-mode: multiply, multiply, multiply, normal;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+    position: relative;
+  }
+
+  /* Subtle paper texture overlay */
+  .page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(0,0,0,0.012) 0 2px, transparent 2px 5px),
+      repeating-linear-gradient(-45deg, rgba(0,0,0,0.012) 0 2px, transparent 2px 6px);
+    mix-blend-mode: multiply;
+  }
+
+  .grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image:
+      radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1.2px),
+      radial-gradient(rgba(255,255,255,0.4) 1px, transparent 1.2px);
+    background-size: 7px 7px, 11px 11px;
+    background-position: 0 0, 3px 4px;
+    mix-blend-mode: multiply;
+  }
+
+  .container { position: relative; z-index: 1; }
+
+  /* Header */
+  .brand {
+    text-align: center;
+    margin-bottom: 22px;
+  }
+  .brand .logo {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 6px;
+    display: block;
+  }
+  .brand h1 {
+    font-size: 38px;
+    letter-spacing: 8px;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .brand .subtitle {
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    letter-spacing: 1px;
+  }
+
+  hr.thin {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 16px 0 14px;
+  }
+
+  /* Combo Add-on */
+  .combo-title {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .combo-title .zh {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .combo-title .en {
+    font-size: 16px;
+    font-style: italic;
+  }
+
+  .combo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 18px;
+    font-size: 15px;
+  }
+  .combo-grid div::before { content: "+ "; }
+
+  /* Section header */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 22px 0 12px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-header .zh {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 4px;
+  }
+  .section-header .en {
+    font-size: 17px;
+    font-style: italic;
+    color: var(--ink);
+  }
+  .section-header .ico {
+    font-size: 22px;
+  }
+
+  /* Two-column body */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 26px;
+  }
+
+  /* Menu list */
+  ul.menu {
+    list-style: none;
+    padding: 0;
+  }
+  ul.menu li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    padding: 5px 0;
+    font-size: 15.5px;
+  }
+  ul.menu li .leaf {
+    color: var(--accent);
+    margin-right: 6px;
+    font-size: 14px;
+  }
+  ul.menu li .name {
+    flex: 1;
+    border-bottom: 1px dotted rgba(0,0,0,0.18);
+    padding-bottom: 2px;
+  }
+  ul.menu li .name small {
+    display: block;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 12.5px;
+    margin-top: 1px;
+  }
+  ul.menu li .price {
+    white-space: nowrap;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* Add-on promotion (drinks) */
+  .promo-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    margin: 26px 0 6px;
+  }
+  .promo-title .zh { font-size: 22px; font-weight: 700; }
+  .promo-title .en { font-size: 16px; font-style: italic; }
+  .promo-title .note { font-size: 13px; color: var(--ink-soft); }
+
+  .promo-note {
+    text-align: center;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .promo-note em { font-style: italic; }
+
+  .drinks {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px 14px;
+    text-align: center;
+  }
+  .drink .zh { font-size: 16px; }
+  .drink .en { font-size: 13.5px; color: var(--ink-soft); font-style: italic; }
+  .drink .price {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  hr.thick {
+    border: none;
+    border-top: 2px solid var(--line);
+    margin: 26px 0 14px;
+  }
+
+  /* Footer */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .badges {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+  .badges .leaf { color: var(--accent); margin-right: 6px; }
+  .badges .moon { color: #2e7d4f; margin-right: 6px; }
+  .takeaway {
+    text-align: right;
+    font-size: 15.5px;
+  }
+  .takeaway .zh { font-weight: 700; }
+  .takeaway .en { font-style: italic; color: var(--ink-soft); }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .page { padding: 22px 16px 40px; }
+    .brand h1 { font-size: 32px; letter-spacing: 6px; }
+    .combo-grid { grid-template-columns: 1fr; gap: 4px 0; }
+    .two-col { grid-template-columns: 1fr; gap: 6px; }
+    .section-header .zh { font-size: 20px; }
+    ul.menu li { font-size: 15px; }
+    .drinks { grid-template-columns: repeat(2, 1fr); gap: 14px 10px; }
+    .promo-title .zh { font-size: 19px; }
+    .footer { flex-direction: column; align-items: flex-start; }
+    .takeaway { text-align: left; }
+  }
+
+  @media (max-width: 380px) {
+    .brand h1 { font-size: 28px; letter-spacing: 4px; }
+    ul.menu li { font-size: 14.5px; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="grain"></div>
+    <div class="container">
+
+      <!-- Brand -->
+      <header class="brand">
+        <!-- Inline SVG leaf logo to avoid external file -->
+        <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" fill="none" stroke="#2a2a2a" stroke-width="2"/>
+          <path d="M50 18 C30 36, 30 58, 50 80 C70 58, 70 36, 50 18 Z"
+                fill="none" stroke="#2a2a2a" stroke-width="2"/>
+          <path d="M50 22 L50 78" stroke="#2a2a2a" stroke-width="1.5"/>
+          <path d="M50 38 Q42 44 38 52" fill="none" stroke="#2a2a2a" stroke-width="1.2"/>
+          <path d="M50 38 Q58 44 62 52" fill="none" stroke="#2a2a2a" stroke-width="1.2"/>
+          <path d="M50 54 Q42 60 40 68" fill="none" stroke="#2a2a2a" stroke-width="1.2"/>
+          <path d="M50 54 Q58 60 60 68" fill="none" stroke="#2a2a2a" stroke-width="1.2"/>
+        </svg>
+        <h1>SORA&nbsp;&nbsp;ZEN</h1>
+        <div class="subtitle">Lunch Menu &nbsp;|&nbsp; 11:00 – 15:00</div>
+      </header>
+
+      <hr class="thin">
+
+      <!-- Combo Add-On -->
+      <div class="combo-title">
+        <span class="zh">加配</span>
+        <span class="en">Combo Add-On:</span>
+      </div>
+      <div class="combo-grid">
+        <div>沙律 Salad <strong>$8</strong></div>
+        <div>咖哩醬 Curry Sauce <strong>$12</strong></div>
+        <div>野菜 Vegetables <strong>$8</strong></div>
+        <div>溫泉蛋 Onsen Egg <strong>$8</strong></div>
+        <div>精選茶 Tea <strong>$8</strong></div>
+      </div>
+
+      <!-- Mains + Add-on options -->
+      <section class="two-col">
+        <div>
+          <div class="section-header">
+            <span class="ico">🍱</span>
+            <span class="zh">主食</span>
+            <span class="en">Mains</span>
+          </div>
+          <ul class="menu">
+            <li><span class="name">鹽麴烤雞肉飯 Salt-Grilled Chicken Rice</span><span class="price">$42</span></li>
+            <li><span class="name">鹽麴烤全雞腿飯 Salt-Grilled Chicken Leg Rice</span><span class="price">$45</span></li>
+            <li><span class="name">薑汁牛肉燒飯 Ginger Beef Rice</span><span class="price">$52</span></li>
+            <li><span class="name">芝士漢堡扒飯 Cheese Burger Steak Rice</span><span class="price">$48</span></li>
+            <li><span class="name">味噌煮挪威鯖魚飯 Miso Norwegian Mackerel Rice</span><span class="price">$45</span></li>
+            <li><span class="name">秘製唐揚雞肉飯 Secret Karaage Chicken Rice</span><span class="price">$52</span></li>
+            <li><span class="name"><span class="leaf">🌿</span>秘製松露野菜飯 Secret Truffle Vegetable Rice</span><span class="price">$55</span></li>
+            <li><span class="name"><span class="leaf">🌿</span>燉野菜飯 Stewed Vegetables Rice</span><span class="price">$42</span></li>
+            <li><span class="name">慢烤牛肩胛即呷肉飯 <small>Slow-Roasted Beef Shoulder Ribeye Rice</small></span><span class="price">$68</span></li>
+            <li><span class="name">香煎一夜花鴨胸肉飯 Pan-Seared Duck Breast Rice</span><span class="price">$48</span></li>
+            <li><span class="name">鹽麴烤挪威三文魚飯 Grilled Norwegian Salmon Rice</span><span class="price">$68</span></li>
+            <li><span class="name">慢煮鴨腿肉飯 Slow-Cooked Duck Leg Rice</span><span class="price">$58</span></li>
+            <li><span class="name">慢烤羊肩肉飯 Slow-Roasted Lamb Shoulder Rice</span><span class="price">$69</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="section-header">
+            <span class="zh">加配選項</span>
+            <span class="en">Add-on options</span>
+          </div>
+          <ul class="menu">
+            <li><span class="name">吉列炸蝦 Fried Shrimp Cutlet</span><span class="price">$22</span></li>
+            <li><span class="name">吉列炸魚 Fried Fish Cutlet</span><span class="price">$20</span></li>
+            <li><span class="name"><span class="leaf">🌿</span>日本南瓜薯餅 Pumpkin Croquette</span><span class="price">$19</span></li>
+            <li><span class="name">秘製唐揚雞翼 Secret Karaage Chicken Wings</span><span class="price">$24</span></li>
+            <li><span class="name">秘製唐揚炸雞 Secret Karaage Fried Chicken</span><span class="price">$22</span></li>
+            <li><span class="name"><span class="leaf">🌿</span>芝麻醬拌秋葵 Okra with Sesame Dressing</span><span class="price">$16</span></li>
+            <li><span class="name">厚燒玉子燒 Thick Japanese Omelet</span><span class="price">$12</span></li>
+            <li><span class="name">茶碗蒸 Chawanmushi</span><span class="price">$18</span></li>
+            <li><span class="name"><span class="leaf">🌿</span>田樂味噌豆腐 Dengaku Miso Tofu</span><span class="price">$18</span></li>
+            <li><span class="name"><span class="leaf">🌿</span>田樂味噌茄子 Dengaku Miso Eggplant</span><span class="price">$18</span></li>
+            <li><span class="name"><span class="leaf">🌿</span>醬烤雜菇 Teriyaki Mixed Mushrooms</span><span class="price">$18</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <hr class="thick">
+
+      <!-- Promo drinks -->
+      <div class="promo-title">
+        <span class="zh">加配優惠</span>
+        <span class="en">Add-on Promotion</span>
+        <span class="note">轉凍飲加 $2 / +$2 for iced drink</span>
+      </div>
+
+      <div class="drinks">
+        <div class="drink"><div class="zh">黑咖啡</div><div class="en">Black Coffee</div><div class="price">$20</div></div>
+        <div class="drink"><div class="zh">泡沫咖啡</div><div class="en">Cappuccino</div><div class="price">$25</div></div>
+        <div class="drink"><div class="zh">蘋果汁</div><div class="en">Apple Juice</div><div class="price">$27</div></div>
+        <div class="drink"><div class="zh">檸檬西柚氣泡水</div><div class="en">Lemon Grapefruit Sparkling Water</div><div class="price">$27</div></div>
+
+        <div class="drink"><div class="zh">拿鐵咖啡</div><div class="en">Caffè Latte</div><div class="price">$27</div></div>
+        <div class="drink"><div class="zh">平白咖啡</div><div class="en">Flat White</div><div class="price">$27</div></div>
+        <div class="drink"><div class="zh">檸檬紅茶</div><div class="en">Lemon Black Tea</div><div class="price">$25</div></div>
+        <div class="drink"><div class="zh">洛神花蜜桃氣泡水</div><div class="en">Roselle Peach Sparkling Water</div><div class="price">$25</div></div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer" style="margin-top: 28px;">
+        <div class="badges">
+          <div><span class="leaf">🌿</span>VEGAN</div>
+          <div><span class="moon">☪</span>HALAL</div>
+        </div>
+        <div class="takeaway">
+          <div class="zh">外賣另加 $2</div>
+          <div class="en">TAKEAWAY + $2</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
