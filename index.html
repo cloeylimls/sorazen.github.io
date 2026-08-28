@@ -1,10 +1,13 @@
 
 <!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
-<title>SORA ZEN · Menu</title>
+<html lang="zh-Hant" data-page-node-id="1RDxGnoAPhntaAEBYOwpPb">
+<head data-page-node-id="itJOgLOMq9VZQnbzUkcQfU">
+<meta charset="UTF-8" data-page-node-id="Dv3GlalttoB9sUkCcUx36h">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0" data-page-node-id="F6PoQzNZvSDgissSO9xuNB">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" data-page-node-id="qwsRORL2SOFmYKk9Gf4pc7">
+<meta http-equiv="Pragma" content="no-cache" data-page-node-id="PVUcaRHmOB5taW01q30gAO">
+<meta http-equiv="Expires" content="0" data-page-node-id="HUCk5qATnMDPrOKiyWJQEr">
+<title>SORA ZEN · Menu (v17)</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -14,17 +17,17 @@
     --line: #1f1f1f;
     --accent: #6b8e23;
     --paper: #f3efe6;
-    --halo: #c9b27a;
+    --halo: #b89148;
   }
   html, body {
     background: #d8d3c6;
     font-family: "Times New Roman", "Noto Serif TC", "Source Han Serif TC", "Songti TC", serif;
     color: var(--ink);
-    line-height: 1.55;
+    line-height: 1.5;
     -webkit-text-size-adjust: 100%;
   }
 
-  /* ===== Top sticky nav ===== */
+  /* ===== Sticky nav ===== */
   .topnav {
     position: sticky; top: 0; z-index: 50;
     background: rgba(243, 239, 230, 0.94);
@@ -45,13 +48,11 @@
     background: rgba(255,255,255,0.4);
     transition: all .2s;
   }
-  .topnav a.active,
-  .topnav a:hover {
-    background: var(--ink);
-    color: var(--paper);
+  .topnav a.active, .topnav a:hover {
+    background: var(--ink); color: var(--paper);
   }
 
-  /* ===== Page wrapper ===== */
+  /* ===== Page ===== */
   .page {
     max-width: 780px;
     margin: 0 auto;
@@ -86,696 +87,971 @@
   /* ===== Big section banner ===== */
   .banner {
     text-align: center;
-    padding: 50px 22px 30px;
+    padding: 50px 22px 28px;
     border-bottom: 2px solid var(--line);
     background:
       linear-gradient(180deg, rgba(255,255,255,0.05), transparent 70%),
       repeating-linear-gradient(45deg, rgba(0,0,0,0.02) 0 1px, transparent 1px 12px);
   }
   .banner .big {
-    font-size: 88px;
-    font-weight: 700;
-    letter-spacing: 24px;
-    line-height: 1.05;
-    color: var(--ink);
+    font-size: 88px; font-weight: 700; letter-spacing: 24px;
+    line-height: 1.05; color: var(--ink);
     text-shadow: 1px 1px 0 rgba(255,255,255,0.4);
-    margin-right: -24px; /* compensate for letter-spacing */
+    margin-right: -24px;
   }
   .banner .en {
-    font-style: italic;
-    font-size: 18px;
-    color: var(--ink-soft);
-    letter-spacing: 6px;
-    margin-top: 10px;
-    text-transform: uppercase;
+    font-style: italic; font-size: 18px; color: var(--ink-soft);
+    letter-spacing: 6px; margin-top: 10px; text-transform: uppercase;
   }
   .banner .divider {
     display: flex; align-items: center; justify-content: center;
-    gap: 10px; margin-top: 18px;
-    color: var(--ink-soft);
-    font-size: 14px;
+    gap: 10px; margin-top: 18px; color: var(--ink-soft); font-size: 14px;
   }
-  .banner .divider::before,
-  .banner .divider::after {
+  .banner .divider::before, .banner .divider::after {
     content: ""; flex: 1; max-width: 90px; height: 1px; background: var(--line);
   }
 
-  /* ===== Brand inside each section ===== */
+  /* ===== Brand block — uses full logo (icon + SORA ZEN text baked in) ===== */
   .brand {
     text-align: center;
-    padding: 24px 22px 4px;
+    padding: 32px 22px 20px;
   }
   .brand .logo {
-    width: 140px; height: 140px; margin: 0 auto 10px; display: block; object-fit: contain;
-  }
-  .brand h1 {
-    font-size: 32px; letter-spacing: 6px; font-weight: 400;
+    width: 280px; max-width: 70%; height: auto;
+    margin: 0 auto 10px; display: block;
+    filter: drop-shadow(0 3px 10px rgba(0,0,0,0.08));
   }
   .brand .sub {
-    font-style: italic; font-size: 14px; color: var(--ink-soft);
-    letter-spacing: 1px; margin-top: 2px;
+    font-size: 16px; color: var(--ink-soft);
+    letter-spacing: 2px;
+    margin-top: 10px;
+    font-style: italic;
   }
 
-  hr.thin { border: none; border-top: 1px solid var(--line); margin: 14px 22px; }
-  hr.thick { border: none; border-top: 2px solid var(--line); margin: 22px 22px 14px; }
+  hr.thin { border: none; border-top: 1px solid rgba(0,0,0,0.45); margin: 14px 22px; }
 
-  /* ===== Combo Add-on grid ===== */
+  /* Bold double rule — for separating two same-block categories (Sandwich ↔ Burger) */
+  hr.divider-bold {
+    border: 0; height: 5px; margin: 14px 16px;
+    background: none;
+    position: relative;
+  }
+  hr.divider-bold::before,
+  hr.divider-bold::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 1px;
+    background: rgba(0,0,0,0.7);
+  }
+  hr.divider-bold::before { top: 0; }
+  hr.divider-bold::after  { top: 4px; }
+
+  /* ===== Section header — dark bar (v4-style color) ===== */
+  .section-head {
+    margin: 22px 22px 6px;
+    padding: 8px 14px;
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 3px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.10);
+  }
+  .section-head .zh {
+    font-size: 18px; font-weight: 700; letter-spacing: 1.5px;
+    color: var(--paper);
+  }
+  .section-head .en {
+    font-size: 12px; font-style: italic; opacity: 0.7;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--paper); margin-left: auto;
+  }
+  /* White-out the rice/chili icon inside the dark bar */
+  .section-head img {
+    width: 24px; height: 24px; object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.92;
+  }
+  /* Suppress the underline that follows .section-head (dark bar is the divider) */
+  .section-head + .underline {
+    border-bottom: none;
+    height: 0;
+    margin: 0;
+  }
+  .underline {
+    border-bottom: 1.5px solid rgba(0,0,0,0.7);
+    margin: 4px 22px 4px;
+  }
+
+  /* ===== Menu list — flex row ===== */
+  ul.menu { list-style: none; padding: 6px 22px 8px; }
+  ul.menu li {
+    padding: 10px 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  /* Zebra striping — soft warm shadow on even rows for easy scanning */
+  ul.menu li:nth-child(even) {
+    background: rgba(140, 110, 70, 0.055);
+    border-radius: 2px;
+  }
+  ul.menu li:last-child { border-bottom: none; }
+  ul.menu li .line {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 12px;
+  }
+  ul.menu li .zh-wrap {
+    flex: 1; min-width: 0;
+    display: flex; align-items: baseline;
+  }
+  ul.menu li .zh-name {
+    font-size: 15px; font-weight: 700; letter-spacing: 0.3px;
+    color: var(--ink); flex: 1; min-width: 0;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: visible;
+  }
+  ul.menu li .leaf {
+    color: var(--accent); margin-right: 4px;
+    font-size: 13px; vertical-align: 1px;
+  }
+  ul.menu li .price {
+    font-size: 17px; font-weight: 700; color: var(--halo);
+    font-family: "Times New Roman", serif;
+    flex-shrink: 0; white-space: nowrap;
+    letter-spacing: 0.3px; line-height: 1.3;
+  }
+  ul.menu li .en-name {
+    display: block; font-size: 12.5px; color: var(--ink-soft);
+    font-style: italic; letter-spacing: 0.3px;
+    line-height: 1.35;
+  }
+  ul.menu.bullet li .zh-wrap {
+    display: flex; align-items: baseline; gap: 0;
+  }
+
+  /* ===== Combo Add-On ===== */
   .combo {
-    padding: 8px 22px 4px;
+    margin: 14px 22px;
+    font-size: 14.5px; line-height: 1.7;
   }
-  .combo-title {
-    display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
-    margin-bottom: 8px;
+  .combo .title {
+    font-size: 19px; font-weight: 700;
+    padding-bottom: 5px;
+    border-bottom: 1.5px solid rgba(0,0,0,0.55);
+    margin-bottom: 10px;
   }
-  .combo-title .zh { font-size: 18px; font-weight: 600; }
-  .combo-title .en { font-size: 15px; font-style: italic; }
-  .combo-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 18px;
-    font-size: 14.5px;
+  .combo .title .en { font-style: italic; font-weight: 400; font-size: 16px; color: var(--ink-soft); margin-left: 4px; }
+  .combo ul {
+    list-style: none; padding: 0;
+    display: flex; flex-wrap: wrap;
+    gap: 6px 18px;
   }
-  .combo-grid div::before { content: "• "; }
-
-  /* ===== Section header ===== */
-  .section-header {
-    display: flex; align-items: baseline; gap: 10px;
-    margin: 22px 22px 10px;
-    padding-bottom: 4px;
-    border-bottom: 1px solid var(--line);
-  }
-  .section-header .zh {
-    font-size: 20px; font-weight: 700; letter-spacing: 3px;
-  }
-  .section-header .en {
-    font-size: 15px; font-style: italic; color: var(--ink);
-  }
+  .combo ul li::before { content: "· "; color: var(--ink); font-weight: 700; margin-right: 2px; }
+  .combo ul li .price { color: var(--halo); font-weight: 700; font-family: "Times New Roman", serif; margin-left: 2px; }
 
   /* ===== Two-column body ===== */
   .two-col {
     display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: 26px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0 28px;
     padding: 0 22px;
-  }
-  ul.menu { list-style: none; }
-  ul.menu li {
-    display: flex; justify-content: space-between; align-items: baseline;
-    gap: 10px; padding: 5px 0; font-size: 15px;
-  }
-  ul.menu li .leaf { color: var(--accent); margin-right: 4px; font-size: 13px; }
-  ul.menu li .name {
-    flex: 1; border-bottom: 1px dotted rgba(0,0,0,0.18); padding-bottom: 2px;
-  }
-  ul.menu li .name small {
-    display: block; font-style: italic; color: var(--ink-soft);
-    font-size: 12.5px; margin-top: 1px;
-  }
-  ul.menu li .price {
-    white-space: nowrap; font-weight: 600; color: var(--ink);
   }
 
-  /* ===== Promotional drinks ===== */
-  .promo {
+  /* ===== Three-column body with central illustration ===== */
+  .three-col {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 165px minmax(0, 1fr);
+    gap: 12px 22px;
     padding: 0 22px;
+    align-items: start;
   }
-  .promo-title {
-    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center;
-    gap: 8px; margin: 22px 0 6px;
+  .three-col .center {
+    text-align: center; padding-top: 4px;
+    position: sticky; top: 60px;
   }
-  .promo-title .zh { font-size: 20px; font-weight: 700; }
-  .promo-title .en { font-size: 15px; font-style: italic; }
-  .promo-title .note { font-size: 12.5px; color: var(--ink-soft); }
-  .drinks {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 16px 12px; text-align: center; margin-top: 6px;
+  .three-col .center img {
+    width: 78px; height: auto; display: block; margin: 0 auto 3px;
+    object-fit: contain;
+    pointer-events: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
-  .drink .zh { font-size: 15px; }
-  .drink .en { font-size: 12.5px; color: var(--ink-soft); font-style: italic; }
-  .drink .price { font-size: 15px; font-weight: 600; margin-top: 3px; }
+  /* Spacing between two icons stacked in same .center (sandwich -> burger etc) */
+  .three-col .center .label + img { margin-top: 14px; }
+  .three-col .center .label {
+    margin-top: 4px;
+    font-size: 16px; font-weight: 800; letter-spacing: 2px;
+    white-space: nowrap;
+    color: var(--ink);
+  }
+  /* Tiny top hairline under each label to make them feel like proper mini section markers */
+  .three-col .center .label {
+    padding-top: 4px;
+    border-top: 1px solid rgba(0,0,0,0.55);
+  }
 
-  /* ===== Step blocks (for salad "Pick Your Main & Base") ===== */
-  .steps {
+  /* ===== Row-with-illustration (dinner RICE on right / HOT POT on left) ===== */
+  .row-with-ill {
+    display: grid; gap: 22px;
     padding: 0 22px;
+    align-items: start;
+  }
+  .row-with-ill .items { min-width: 0; }
+  .row-with-ill .center {
+    text-align: center; padding-top: 4px;
+  }
+  .row-with-ill .center img {
+    width: 110px; height: auto; display: block; margin: 0 auto 6px;
+    object-fit: contain;
+  }
+  .row-with-ill .center .label {
+    font-size: 16px; font-weight: 800; letter-spacing: 2px;
+    white-space: nowrap;
+    color: var(--ink);
+    padding-top: 4px;
+    border-top: 1px solid rgba(0,0,0,0.55);
+  }
+  .row-with-ill.ill-right { grid-template-columns: minmax(0, 1fr) 160px; }
+  .row-with-ill.ill-right .center { grid-column: 2; }
+  .row-with-ill.ill-right .items { grid-column: 1; }
+  .row-with-ill.ill-left  { grid-template-columns: 160px minmax(0, 1fr); }
+  .row-with-ill.ill-left  .center { grid-column: 1; }
+  .row-with-ill.ill-left  .items { grid-column: 2; }
+
+  /* ===== Salad top: bowl left + items right ===== */
+  .salad-bowl-row {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 18px;
+    margin: 14px 22px;
+    align-items: center;
+  }
+  .salad-bowl-row .bowl { text-align: center; }
+  .salad-bowl-row .bowl img {
+    width: 110px; height: auto; object-fit: contain; display: inline-block;
+  }
+  .salad-bowl-row .bowl .label {
+    font-size: 14px; font-weight: 700; letter-spacing: 2px; margin-top: 4px;
+  }
+
+  /* ===== Pick Your Main (salad PDF) ===== */
+  .pick-your-main {
     text-align: center;
+    margin: 18px 22px 8px;
+    font-size: 17px; font-weight: 700;
   }
-  .steps .title {
-    text-align: center; font-size: 19px; font-weight: 600;
-    margin: 8px 0 14px;
+  .pick-your-main .price {
+    display: inline-block; margin-left: 10px;
+    color: var(--halo); font-family: "Times New Roman", serif;
+    border: 1.5px solid var(--ink); padding: 1px 10px;
+    border-radius: 3px;
   }
-  .steps .title .en { font-style: italic; font-weight: 400; margin-left: 6px; }
-  .steps .price {
-    display: inline-block; border: 1.5px solid var(--ink);
-    padding: 2px 12px; border-radius: 4px; font-weight: 600; margin-left: 8px;
+  .veggie-center {
+    text-align: center;
+    margin: 6px 22px 10px;
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    flex-wrap: wrap;
   }
-  .step {
-    margin: 10px 0; font-size: 15px;
+  .veggie-center img {
+    width: 240px; max-width: 60%; height: auto;
+    display: inline-block; vertical-align: middle;
   }
-  .step .head { font-weight: 600; }
-  .step .head .en { font-style: italic; font-weight: 400; margin-left: 4px; }
-  .step .opts { color: var(--ink-soft); margin-top: 3px; font-size: 14.5px; }
+  .veggie-center .label {
+    display: inline-block; vertical-align: middle;
+    font-size: 14px; font-weight: 700;
+    text-align: left;
+  }
+  .veggie-center .label .en {
+    display: block; font-style: italic; font-weight: 400; font-size: 13px; color: var(--ink-soft);
+    margin-top: 2px;
+  }
 
-  /* ===== Footer ===== */
-  .footer {
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 10px; padding: 0 22px 28px;
+  .steps { padding: 6px 22px 12px; font-size: 14px; line-height: 1.6; }
+  .steps .step { margin: 8px 0; }
+  .steps .step::before { content: "•  "; color: var(--ink); }
+  .steps .step .zh { font-weight: 700; }
+  .steps .step .en { font-style: italic; font-weight: 400; color: var(--ink); }
+  .steps .opts {
+    color: var(--ink); margin: 4px 0 4px 16px; font-size: 13.5px;
   }
-  .badges { display: flex; gap: 18px; font-size: 15px; font-weight: 600; letter-spacing: 2px; }
+  .steps .opts .en { font-style: italic; color: var(--ink-soft); }
+
+  /* ===== Promo + drinks ===== */
+  .promo { padding: 6px 22px 0; }
+  .promo-head {
+    text-align: center;
+    margin: 16px 0 6px;
+    font-size: 18px;
+  }
+  .promo-head .zh { font-weight: 700; }
+  .promo-head .en { font-style: italic; color: var(--ink-soft); margin-left: 6px; font-weight: 400; font-size: 16px; }
+  .promo-head .note { font-size: 13px; color: var(--ink-soft); margin-left: 10px; font-style: italic; }
+  .drinks {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px 12px;
+    margin: 8px 0 0;
+  }
+  .drink { padding: 4px 0; }
+  .drink .zh { font-weight: 600; font-size: 14.5px; }
+  .drink .en { font-style: italic; font-size: 13px; color: var(--ink-soft); display: block; line-height: 1.4; margin-top: 2px; }
+  .drink .price { color: var(--halo); font-weight: 700; font-family: "Times New Roman", serif; font-size: 14.5px; margin-top: 4px; display: block; }
+
+  /* ===== Footer (normal flow at bottom of section) ===== */
+  .footer {
+    margin: 0 22px;
+    padding: 14px 0 22px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 10px;
+  }
+  .badges { display: flex; flex-direction: column; gap: 4px; font-size: 15px; font-weight: 600; letter-spacing: 1px; }
   .badges .leaf { color: var(--accent); margin-right: 5px; }
   .badges .moon { color: #2e7d4f; margin-right: 5px; }
   .takeaway { text-align: right; font-size: 14.5px; }
   .takeaway .zh { font-weight: 700; }
   .takeaway .en { font-style: italic; color: var(--ink-soft); display: block; }
 
+  /* ===== Address banner (only sticky element — fixed to viewport bottom) ===== */
+  .address {
+    position: fixed;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 100%; max-width: 780px;
+    background: rgba(243, 239, 230, 0.96);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1.5px solid rgba(0,0,0,0.6);
+    box-shadow: 0 -6px 18px rgba(0,0,0,0.08);
+    padding: 12px 22px 14px;
+    text-align: center; line-height: 1.5;
+    z-index: 60;
+  }
+  /* Reserve space so the last menu row isn't hidden behind the sticky banner */
+  .page { padding-bottom: 90px; }
+  .address .zh { font-size: 13.5px; font-weight: 700; letter-spacing: 0.4px; color: var(--ink); }
+  .address .en { font-size: 11.5px; font-style: italic; color: var(--ink-soft); letter-spacing: 0.3px; margin-top: 3px; }
+
   /* ===== Responsive ===== */
   @media (max-width: 640px) {
     .banner { padding: 36px 18px 22px; }
     .banner .big { font-size: 64px; letter-spacing: 16px; margin-right: -16px; }
     .banner .en { font-size: 15px; letter-spacing: 4px; }
-    .combo-grid { grid-template-columns: 1fr; }
-    .two-col { grid-template-columns: 1fr; gap: 6px; }
+    .brand { padding: 24px 16px 14px; }
+    .brand .logo { width: 230px; }
+    .brand .sub { font-size: 14px; }
+    .two-col { grid-template-columns: 1fr; gap: 6px 0; padding: 0 18px; }
+    .three-col { grid-template-columns: 1fr; gap: 6px; padding: 0 18px; }
+    .section-head { margin: 18px 18px 5px; padding: 7px 12px; gap: 8px; }
+    .section-head .zh { font-size: 16px; letter-spacing: 1px; }
+    .section-head .en { font-size: 11px; letter-spacing: 2px; }
+    .section-head img { width: 22px; height: 22px; }
+    .three-col .center {
+      padding: 10px 0 4px; position: static;
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+    }
+    .three-col .center img { display: none; }
+    .three-col .center .label { font-size: 16px; }
+    .row-with-ill { grid-template-columns: 1fr !important; padding: 0 18px; }
+    .row-with-ill.ill-right .center,
+    .row-with-ill.ill-left .center {
+      grid-column: 1; padding: 6px 0;
+      display: flex; align-items: center; justify-content: flex-start; gap: 14px;
+    }
+    .row-with-ill .center img { display: none; }
+    .salad-bowl-row .bowl img { display: none; }
+    .salad-bowl-row { grid-template-columns: minmax(0, 1fr); }
+    .veggie-center img { display: none; }
+    .steps, .promo { padding-left: 18px; padding-right: 18px; }
     .drinks { grid-template-columns: repeat(2, 1fr); }
-    .brand .logo { width: 120px; height: 120px; }
-    ul.menu li { font-size: 14.5px; }
-    .footer { flex-direction: column; align-items: flex-start; }
-    .takeaway { text-align: left; }
+    .footer { flex-direction: column; align-items: center; padding: 14px 18px 22px; gap: 8px; text-align: center; }
+    .takeaway { text-align: center; }
+    .address { padding: 10px 18px 12px; }
+    .address .zh { font-size: 13px; }
+    .address .en { font-size: 11px; white-space: normal; }
+    .page { padding-bottom: 110px; }
+    .three-col .center { font-size: 14px; }
+    .three-col .center .label { letter-spacing: 2px; }
+    ul.menu li .zh-name { font-size: 14.5px; white-space: nowrap; }
+    ul.menu li .en-name { font-size: 12px; }
   }
   @media (max-width: 380px) {
     .banner .big { font-size: 52px; letter-spacing: 12px; margin-right: -12px; }
-    ul.menu li { font-size: 14px; }
+    .brand .logo { width: 190px; }
   }
 </style>
 </head>
-<body>
+<body data-page-node-id="fyoiQq6srrCZa6G0a2IE2g">
 
 <!-- ========== STICKY NAV ========== -->
-<nav class="topnav" id="topnav">
-  <a href="#sec-lunch">午餐 Lunch</a>
-  <a href="#sec-salad">沙拉 Salad</a>
-  <a href="#sec-tea">下午茶 Tea</a>
-  <a href="#sec-breakfast">早餐 Breakfast</a>
-  <a href="#sec-dinner">晚餐 Dinner</a>
+<nav class="topnav" id="topnav" data-page-node-id="vsyxbYVm17gXQalpHCI2Zt">
+  <a href="#sec-lunch" data-page-node-id="ywkfjlXPXlHckUdkIvEyAH">午餐 Lunch</a>
+  <a href="#sec-salad" data-page-node-id="oHFEfpdriBRzZDNXbUxzw9">沙律 Salad</a>
+  <a href="#sec-tea" data-page-node-id="lBpz4TKokRzNqsEKL6nTFC">下午茶 Tea</a>
+  <a href="#sec-breakfast" data-page-node-id="36dtJZokkBm1ute40hyPnT">早餐 Breakfast</a>
+  <a href="#sec-dinner" data-page-node-id="GAAGSbiNqLqzGGB5IkOcoG">晚餐 Dinner</a>
 </nav>
 
 <!-- ====================================================== -->
 <!-- 1. LUNCH 午餐 -->
 <!-- ====================================================== -->
-<section id="sec-lunch" class="page" style="margin-top: 0;">
-  <div class="grain"></div>
-  <div class="container">
+<section id="sec-lunch" class="page" style="margin-top: 0;" data-page-node-id="PH4NMZYBj640xpjRmGh9Nq">
+  <div class="grain" data-page-node-id="hNHuOEHUNludaCshDCZRCp"></div>
+  <div class="container" data-page-node-id="LeUD2S77Y7ZPMLjKHm2F4N">
 
-    <div class="banner">
-      <div class="big">午餐</div>
-      <div class="en">Lunch</div>
-      <div class="divider">11:00 – 15:00</div>
+    <div class="banner" data-page-node-id="H9DGf3dvcaqSAjGEGHphPG">
+      <div class="big" data-page-node-id="P3rajzN995rg8IZQD1z0GL">午餐</div>
+      <div class="en" data-page-node-id="0lsucJTfBHR6RTAIGMpALa">Lunch</div>
+      <div class="divider" data-page-node-id="yQbVo1CKr2YJBnj0PqM7or">11:00 – 15:00</div>
     </div>
 
-    <div class="brand">
-      <img class="logo" src="sora-zen-logo.png" alt="SORA ZEN">
-      <div class="sub">Lunch Menu &nbsp;|&nbsp; 11:00 – 15:00</div>
+    <div class="brand" data-page-node-id="GMWScBMX5bXMohXGvQUYQA">
+      <img class="logo" src="sora-zen-logo-cropped.png" alt="SORA ZEN" data-page-node-id="yRgWwMCX4XbhVtF2dpWksF">
+      <div class="sub" data-page-node-id="H9yJBsFHqYgr9tauSUUT8y">Lunch Menu &nbsp;|&nbsp; 11:00 - 15:00</div>
     </div>
 
-    <hr class="thin">
+    <hr class="thin" data-page-node-id="mRB4iw69CloBSRnUJhUd3W">
 
-    <div class="combo">
-      <div class="combo-title">
-        <span class="zh">加配</span>
-        <span class="en">Combo Add-On:</span>
-      </div>
-      <div class="combo-grid">
-        <div>沙律 Salad <strong>$8</strong></div>
-        <div>咖哩醬 Curry Sauce <strong>$12</strong></div>
-        <div>野菜 Vegetables <strong>$8</strong></div>
-        <div>溫泉蛋 Onsen Egg <strong>$8</strong></div>
-        <div>精選茶 Tea <strong>$8</strong></div>
-      </div>
+    <div class="combo" data-page-node-id="kkHiptggkOvkobsA0mDgNP">
+      <div class="title" data-page-node-id="ycNftMbCHFikwT2Aosr7vG">加配 <span class="en" data-page-node-id="OH1FCIklYxHe3c92bi3QsT">Combo Add-On:</span></div>
+      <ul data-page-node-id="vvTEGfsaCiEzZaY3bnHoej">
+        <li data-page-node-id="eXBJ95EhQI0FgcUJ7SD0he">沙律 Salad <span class="price" data-page-node-id="Jog8tTPR9YP5Bdpn389tpb">$8</span></li>
+        <li data-page-node-id="2GGj31rWODxSjYQCNSp8l1">咖哩醬 Curry Sauce <span class="price" data-page-node-id="WGODcMT90iPEPBP1eAUaFn">$12</span></li>
+        <li data-page-node-id="9GP84d2sqh4AKwNFLdvBBU">野菜 Vegetables <span class="price" data-page-node-id="eSqG0XIucgQz9RFRqpB0ct">$8</span></li>
+        <li data-page-node-id="BTySkjbtluNz7wLLYGLsPq">溫泉蛋 Onsen Egg <span class="price" data-page-node-id="v7UMytE9SISy2amwyUGkxL">$8</span></li>
+        <li data-page-node-id="50MRsy7CV3eLhZIcAslXD2">精選茶 Tea <span class="price" data-page-node-id="yrmLuaLNmzUOItEGtV2Zbr">$8</span></li>
+      </ul>
     </div>
 
-    <div class="two-col">
-      <div>
-        <div class="section-header">
-          <span class="zh">主食</span><span class="en">Mains</span>
+    <hr class="thin" data-page-node-id="bliyXjIPljgbJh0BlVB8Mj">
+
+    <div class="two-col" data-page-node-id="aVSwdB94WIv5Aw7Iqkdqac">
+      <div data-page-node-id="QL3IB7NLuLILzcSH1CJcoV">
+        <div class="section-head" data-page-node-id="GlFMOCLiAm3ORMw2PULyT0">
+          <img src="images/rice.png" alt="" style="width:32px;height:32px;object-fit:contain;vertical-align:-9px;margin-right:6px;" data-page-node-id="pmNrVht1EQRPONI0Mm4GGG">
+          <span class="zh" data-page-node-id="UIEyMdFgrOxoqTT98QV2rd">主食</span><span class="en" data-page-node-id="M2te5tULqlyxNiYeer15b2">&nbsp;Mains</span>
         </div>
-        <ul class="menu">
-          <li><span class="name">鹽麴烤雞肉飯 Salt-Grilled Chicken Rice</span><span class="price">$42</span></li>
-          <li><span class="name">鹽麴烤全雞腿飯 Salt-Grilled Chicken Leg Rice</span><span class="price">$45</span></li>
-          <li><span class="name">薑汁牛肉燒飯 Ginger Beef Rice</span><span class="price">$52</span></li>
-          <li><span class="name">芝士漢堡扒飯 Cheese Burger Steak Rice</span><span class="price">$48</span></li>
-          <li><span class="name">味噌煮挪威鯖魚飯 Miso Norwegian Mackerel Rice</span><span class="price">$45</span></li>
-          <li><span class="name">秘製唐揚雞肉飯 Secret Karaage Chicken Rice</span><span class="price">$52</span></li>
-          <li><span class="name"><span class="leaf">🌿</span>秘製松露野菜飯 Secret Truffle Vegetable Rice</span><span class="price">$55</span></li>
-          <li><span class="name"><span class="leaf">🌿</span>燉野菜飯 Stewed Vegetables Rice</span><span class="price">$42</span></li>
-          <li><span class="name">慢烤牛肩胛即呷肉飯 <small>Slow-Roasted Beef Shoulder Ribeye Rice</small></span><span class="price">$68</span></li>
-          <li><span class="name">香煎一夜花鴨胸肉飯 Pan-Seared Duck Breast Rice</span><span class="price">$48</span></li>
-          <li><span class="name">鹽麴烤挪威三文魚飯 Grilled Norwegian Salmon Rice</span><span class="price">$68</span></li>
-          <li><span class="name">慢煮鴨腿肉飯 Slow-Cooked Duck Leg Rice</span><span class="price">$58</span></li>
-          <li><span class="name">慢烤羊肩肉飯 Slow-Roasted Lamb Shoulder Rice</span><span class="price">$69</span></li>
+        <div class="underline" data-page-node-id="n1v1V1zyiyb8P5xI4vBnqt"></div>
+        <ul class="menu bullet" data-page-node-id="dWUo2fUOUJo6AmgIjTZl6s">
+          <li data-page-node-id="H2OVpgyBM3ojjhVncB2mOX"><div class="line" data-page-node-id="OtigdvJHQgFBwczF6Pec2N"><span class="zh-wrap" data-page-node-id="NavApmWGuJOfgzQr8HBEda"><span class="zh-name" data-page-node-id="FADCl3MPfYBuxaoBBrtTV1">鹽麴烤雞肉飯</span></span><span class="price" data-page-node-id="cA0BlN3W27fNGTuU8VY4w9">$42</span></div><span class="en-name" data-page-node-id="pDHuY7pKq5MOkzBXUN2ZGJ">Salt-Grilled Chicken Rice</span></li>
+          <li data-page-node-id="1PGDfWKfvhywDBI8uSJNHJ"><div class="line" data-page-node-id="hTgnWluhgXPChxhhwdOTtF"><span class="zh-wrap" data-page-node-id="Wpc5rmPjGXkLHBsrRYR00k"><span class="zh-name" data-page-node-id="TU55vQtQK7ugHi35klrEOp">鹽麴烤全雞腿飯</span></span><span class="price" data-page-node-id="Zqe1a4TRe0LqWuyd1LED8v">$45</span></div><span class="en-name" data-page-node-id="8gku6CtCHO8D3Zdu8sXgk5">Salt-Grilled Chicken Leg Rice</span></li>
+          <li data-page-node-id="9V0JjXloeFK1r8kmJkpeW3"><div class="line" data-page-node-id="m9cqf3loGILRI0VZs29hGX"><span class="zh-wrap" data-page-node-id="x31boNIARpjaORrQWrmkvp"><span class="zh-name" data-page-node-id="BbmwsW1BI9SHGYliaTl0yz">薑汁牛肉燒飯</span></span><span class="price" data-page-node-id="WqDBOhgmlCl5n9ct9aRWQW">$52</span></div><span class="en-name" data-page-node-id="fbIxfCJW2BDKRARh346SW9">Ginger Beef Rice</span></li>
+          <li data-page-node-id="Mal82W03muJk6FTPYW60xe"><div class="line" data-page-node-id="rr8TnZIgiG6jlpPydISLEg"><span class="zh-wrap" data-page-node-id="DbOQHGAtRNwrgA0hKFZf0v"><span class="zh-name" data-page-node-id="UW73lqJGrLBHvm1V94OBDp">芝士漢堡扒飯</span></span><span class="price" data-page-node-id="DwtaW70GS9SvEqyTjA6rs8">$48</span></div><span class="en-name" data-page-node-id="57t5eG4828Nw2p5COiWljO">Cheese burger Steak Rice</span></li>
+          <li data-page-node-id="hoPjMSG6uFXVnOV4fV4DL8"><div class="line" data-page-node-id="LcHV6dc6358FVrz4sInRt3"><span class="zh-wrap" data-page-node-id="jrlscFFrjKhvZpIaEDhhWN"><span class="zh-name" data-page-node-id="un2CoAzjdjndMlZVBLoUkI">味噌煮挪威鯖魚飯</span></span><span class="price" data-page-node-id="HsNCYB62J7zwGxUn34pGay">$45</span></div><span class="en-name" data-page-node-id="yh4ms0nl7jI2gsapNxZyMT">Miso Norwegian Mackerel Rice</span></li>
+          <li data-page-node-id="qQu5RVwV4Zom8ZML0pDxC5"><div class="line" data-page-node-id="fQabnIrxGYWtjsyolERP3G"><span class="zh-wrap" data-page-node-id="dFLPhr88YanbddqNpgYixy"><span class="zh-name" data-page-node-id="5DeH7ic3r0HRaE28vYN3wN">秘製唐揚雞肉飯</span></span><span class="price" data-page-node-id="YLV5fFhXQ4PMi3858Fnh9r">$52</span></div><span class="en-name" data-page-node-id="CbnAJnm5Xi7Cb3McKcseTA">Secret Karaage Chicken Rice</span></li>
+          <li data-page-node-id="6QIrugsYNsXAwhlB1DSThq"><div class="line" data-page-node-id="1eGkN2jEEM9G3k6BjO33kh"><span class="zh-wrap" data-page-node-id="quFjmZ7odWkEoACVgNSpQ0"><span class="leaf" data-page-node-id="k8WIDyfW6sYBfuzVOjIoZw">🌿</span><span class="zh-name" data-page-node-id="PVWitV6ByPsiXdAnPjXRe7">秘製松露野菜飯</span></span><span class="price" data-page-node-id="ybuWpOn81ywWx6BG3K9Bqg">$55</span></div><span class="en-name" data-page-node-id="ti8ehKiGBkjiCz4E0TAGEY">Secret Truffle Vegetable Rice</span></li>
+          <li data-page-node-id="hedSthZCW6WBDs9UDUVXsj"><div class="line" data-page-node-id="2npnuTBe4qhFBy918J3Uua"><span class="zh-wrap" data-page-node-id="T5AGKhF5ET8nemrMpXlojV"><span class="leaf" data-page-node-id="GPyYapaxwNy0PoJF2pnoSl">🌿</span><span class="zh-name" data-page-node-id="l2goAsL5bfpWQ1rapUHasV">燉野菜飯</span></span><span class="price" data-page-node-id="cmPA0EBV3pCPQaEBRy50U1">$42</span></div><span class="en-name" data-page-node-id="olaCBLhOIVPke7VNXdaXd0">Stewed Vegetables Rice</span></li>
+          <li data-page-node-id="63KIKlHSgAGUbuFmM1qpYJ"><div class="line" data-page-node-id="jizVGBW4aZloMLvCmjfRXv"><span class="zh-wrap" data-page-node-id="sQp7Xw8CocgAUfRruecVRq"><span class="zh-name" data-page-node-id="ZSDmp93f8Ry3GNUufu6fDH">慢烤牛肩胛即呷肉飯</span></span><span class="price" data-page-node-id="AbrnGF61JX7GK6sIr9ODMu">$68</span></div><span class="en-name" data-page-node-id="CLvn7oHgrIaQzCJ6Y4Vfo4">Slow-Roasted Beef Shoulder Ribeye Rice</span></li>
+          <li data-page-node-id="fCPQfawjYsiSMfCcrTFir6"><div class="line" data-page-node-id="lagh0hlGVTUFzaKWge6Rom"><span class="zh-wrap" data-page-node-id="bruAsPhFTn0H5GxpkelgMN"><span class="zh-name" data-page-node-id="Ej0TaPyEe0hRrKFA9qIFyX">香煎一夜花鴨胸肉飯</span></span><span class="price" data-page-node-id="9eUuHcsup0KggKCvxl0Dkn">$48</span></div><span class="en-name" data-page-node-id="9pODPVsgVt7zxGJnEA23DP">Pan-Seared Duck Breast Rice</span></li>
+          <li data-page-node-id="GW9LoKETExoNg2kthOJEzy"><div class="line" data-page-node-id="lkMYMtfN8qGwXlS50LcEYB"><span class="zh-wrap" data-page-node-id="iyDo8sqEfAMIrlpMN6yvsa"><span class="zh-name" data-page-node-id="eMYeBreK7H1z90nAY0HJWd">鹽麴烤挪威三文魚飯</span></span><span class="price" data-page-node-id="EF6SfXi5LX6x4A9TGw2e7o">$68</span></div><span class="en-name" data-page-node-id="97T0TCiodYyyhpdm3g0RLM">Grilled Norwegian Salmon Rice</span></li>
+          <li data-page-node-id="oiuhOpNkwPG9CC9MKIgYkq"><div class="line" data-page-node-id="GNGDiuHXltLR3TldsCrMAv"><span class="zh-wrap" data-page-node-id="JVTkGl7UwKDxkXGTEWpWGd"><span class="zh-name" data-page-node-id="60iJFnAx7tQdsgwDLXB6tK">慢煮鴨腿肉飯</span></span><span class="price" data-page-node-id="pjbHu7mK7DOAd4Q2ma95we">$58</span></div><span class="en-name" data-page-node-id="PpOfhno4GZ6g6NnOxzpRX8">Slow-Cooked Duck Leg Rice</span></li>
+          <li data-page-node-id="ivXvLHmh28KKnMK1mam2tC"><div class="line" data-page-node-id="z4isFA7E7mCsuPadJNlFLD"><span class="zh-wrap" data-page-node-id="FYyxncnnbdyO0V9vP6iKYr"><span class="zh-name" data-page-node-id="o78e5AVMTNDTQPFKnUQopr">慢烤羊肩肉飯</span></span><span class="price" data-page-node-id="4H6DOiOGlk9fUyrBSmnLCk">$69</span></div><span class="en-name" data-page-node-id="vidEA7yRvX03gmYWbZFWm7">Slow-Roasted Lamb Shoulder Rice</span></li>
         </ul>
       </div>
-
-      <div>
-        <div class="section-header">
-          <span class="zh">加配選項</span><span class="en">Add-on options</span>
+      <div data-page-node-id="ZT6CLa3MymuApViecpaAED">
+        <div class="section-head" data-page-node-id="iZf1xeoOiVEV8UP7DwwYC4">
+          <span class="zh" data-page-node-id="uCercKcH32YRnCH4KwYKAJ">加配選項</span><span class="en" data-page-node-id="MT198qkWaIPAvwYRKLUoim">&nbsp;Add-on options</span>
         </div>
-        <ul class="menu">
-          <li><span class="name">吉列炸蝦 Fried Shrimp Cutlet</span><span class="price">$22</span></li>
-          <li><span class="name">吉列炸魚 Fried Fish Cutlet</span><span class="price">$20</span></li>
-          <li><span class="name"><span class="leaf">🌿</span>日本南瓜薯餅 Pumpkin Croquette</span><span class="price">$19</span></li>
-          <li><span class="name">秘製唐揚雞翼 Secret Karaage Chicken Wings</span><span class="price">$24</span></li>
-          <li><span class="name">秘製唐揚炸雞 Secret Karaage Fried Chicken</span><span class="price">$22</span></li>
-          <li><span class="name"><span class="leaf">🌿</span>芝麻醬拌秋葵 Okra with Sesame Dressing</span><span class="price">$16</span></li>
-          <li><span class="name">厚燒玉子燒 Thick Japanese Omelet</span><span class="price">$12</span></li>
-          <li><span class="name">茶碗蒸 Chawanmushi</span><span class="price">$18</span></li>
-          <li><span class="name"><span class="leaf">🌿</span>田樂味噌豆腐 Dengaku Miso Tofu</span><span class="price">$18</span></li>
-          <li><span class="name"><span class="leaf">🌿</span>田樂味噌茄子 Dengaku Miso Eggplant</span><span class="price">$18</span></li>
-          <li><span class="name"><span class="leaf">🌿</span>醬烤雜菇 Teriyaki Mixed Mushrooms</span><span class="price">$18</span></li>
+        <div class="underline" data-page-node-id="GjRxcY3hfUyXMypX1oUPmD"></div>
+        <ul class="menu bullet" data-page-node-id="21LCm1AMrSSfRrVHYtQO9D">
+          <li data-page-node-id="CbXhcH4G41H6AR0omeJG34"><div class="line" data-page-node-id="apS7xfImqIaXSiGW0So8EY"><span class="zh-wrap" data-page-node-id="9otfsatJL5LPxAvgYg4EV8"><span class="zh-name" data-page-node-id="aqobNGG7nPni0RChHAteCy">吉列炸蝦</span></span><span class="price" data-page-node-id="mwSY3BkwVKtybUNOsswmnr">$22</span></div><span class="en-name" data-page-node-id="tvSZrxX4HVUuB7Z4zqUMnS">Fried Shrimp Cutlet</span></li>
+          <li data-page-node-id="CCd3eJIflGgALp6daNmrJs"><div class="line" data-page-node-id="SNiqnG5BGmBzKwUT0fwG6F"><span class="zh-wrap" data-page-node-id="SzM1beRp5Hdof7D3wu4lKZ"><span class="zh-name" data-page-node-id="kzQX0dI86E1GZWxxYHnrpK">吉列炸魚</span></span><span class="price" data-page-node-id="WsyvhmNphUEFWt05K04OiU">$20</span></div><span class="en-name" data-page-node-id="OmzL6lGIUPWxeeoLzOtiIM">Fried Fish Cutlet</span></li>
+          <li data-page-node-id="BkNtQ61VMyWjDLOBVz4nKZ"><div class="line" data-page-node-id="RKm758UOezSbYgBMTWjyYU"><span class="zh-wrap" data-page-node-id="TF0czjaF2REeJZnmm7nKNd"><span class="leaf" data-page-node-id="UJrmsLjGpYHNoiUrfyKXMQ">🌿</span><span class="zh-name" data-page-node-id="nQ1mJu4mIrozY3thEjbvi7">日本南瓜薯餅</span></span><span class="price" data-page-node-id="AJ5YZ3GdENWuQoqv0NyvNc">$19</span></div><span class="en-name" data-page-node-id="EwfruzTdezvrd6Z2b28tKo">Pumpkin Croquette</span></li>
+          <li data-page-node-id="IalZsQx980EXna10f6wvKy"><div class="line" data-page-node-id="V3YhodtztzCPBWNJ5Mk6i2"><span class="zh-wrap" data-page-node-id="4lnfHKZ1wypA1GwjLWeHrh"><span class="zh-name" data-page-node-id="iA4XOYCosho3oJP2zkOEqK">秘製唐揚雞翼</span></span><span class="price" data-page-node-id="vEFUVbm19Ara3ql2xxUrxW">$24</span></div><span class="en-name" data-page-node-id="pv3S6ETra5PtCCANWurQ4S">Secret Karaage Chicken Wings</span></li>
+          <li data-page-node-id="HhT4vJYFbRFtdtfh7jMgEv"><div class="line" data-page-node-id="NFatlxhe7ZNvAgE4uAyX5v"><span class="zh-wrap" data-page-node-id="l1oQPV0fx5FxaBQOxDrlKu"><span class="zh-name" data-page-node-id="LODcvdJqvN2QI2eY8zt0l3">秘製唐揚炸雞</span></span><span class="price" data-page-node-id="C1C8h4Dzrk2oIs15i01fYu">$22</span></div><span class="en-name" data-page-node-id="EYZBZZiYiQ9JKntppsL0b5">Secret Karaage Fried Chicken</span></li>
+          <li data-page-node-id="7NFX7vMOv2b5fj9H1gzo4F"><div class="line" data-page-node-id="ioKADlI6NnfXTAZdRl1sZm"><span class="zh-wrap" data-page-node-id="hQ9YBy5oAjkzpVEbqhTJyQ"><span class="leaf" data-page-node-id="WzcEW1GuplTulyRL2rchoI">🌿</span><span class="zh-name" data-page-node-id="6Poha3Mf6MVIhwO9x72uwe">芝麻醬拌秋葵</span></span><span class="price" data-page-node-id="HCUvcLPg9OAEVrOAwqgpub">$16</span></div><span class="en-name" data-page-node-id="lGqyYyxFF7MKjTLWuLBx40">Okra with Sesame Dressing</span></li>
+          <li data-page-node-id="IaEXoO4igzjxkFIKzidTNv"><div class="line" data-page-node-id="jhen15UzYdHVTr2G8Baqt8"><span class="zh-wrap" data-page-node-id="S8optMbf0GePiqZFX4Awgu"><span class="zh-name" data-page-node-id="k2Vh9npkCPDf3kjCEbjmN0">厚燒玉子燒</span></span><span class="price" data-page-node-id="AU5aTeHfd0PVwYCLYeiZyU">$12</span></div><span class="en-name" data-page-node-id="GQOnrjygj1nG2dmewkSI7i">Thick Japanese Omelet</span></li>
+          <li data-page-node-id="19fi2f87ctZ7AJDhPXKy1w"><div class="line" data-page-node-id="eQKk07Ym00czuR555Vs532"><span class="zh-wrap" data-page-node-id="75iGTLBkJXsyhDUCLU6Rte"><span class="zh-name" data-page-node-id="p1Jbm0cE5kD0ya9RMyhP8q">茶碗蒸</span></span><span class="price" data-page-node-id="ChEW2nkBLwcaSUEDk51u9F">$18</span></div><span class="en-name" data-page-node-id="1L2rCKxkXtEuhKZirDfegh">Chawanmushi</span></li>
+          <li data-page-node-id="ylefnJmnVdNZxhTAP9UYEY"><div class="line" data-page-node-id="tbICJ29QWkXs3Ppvns2N8d"><span class="zh-wrap" data-page-node-id="FShUgzmCAUVH1G1qj0el0Z"><span class="leaf" data-page-node-id="0DTiKBjSNIFvjVvBQExV5J">🌿</span><span class="zh-name" data-page-node-id="emFISVq2BiLpncHCpZyIeQ">田樂味噌豆腐</span></span><span class="price" data-page-node-id="SaqhZXDKUJyYpBZVbdhnTc">$18</span></div><span class="en-name" data-page-node-id="tmiN2IP5JICqBmlKE0s4Zl">Dengaku Miso Tofu</span></li>
+          <li data-page-node-id="w4YW8HN60DozBpBcNwy6bo"><div class="line" data-page-node-id="fbbKMmxYyS8Fc6pclYHB39"><span class="zh-wrap" data-page-node-id="aFEzNNEq0xCmAWFFuNGL7U"><span class="leaf" data-page-node-id="rnqlt9JPumDG9R7e3xf8kv">🌿</span><span class="zh-name" data-page-node-id="sDUdjk9mnrDeiTUhoiwPEr">田樂味噌茄子</span></span><span class="price" data-page-node-id="VKY6C0ERlmxaLaNU1sdqFy">$18</span></div><span class="en-name" data-page-node-id="sTKAtPKThEPMFexB8zypuo">Dengaku Miso Eggplant</span></li>
+          <li data-page-node-id="LLaSNLeYH7v4z3mBazAbIV"><div class="line" data-page-node-id="WbpOT9c5AAGrjcGR9ALbAL"><span class="zh-wrap" data-page-node-id="8Df5IHcnbqNWLjCL6FMLEg"><span class="leaf" data-page-node-id="UgUAxxFU4i1dXKf75G8GZa">🌿</span><span class="zh-name" data-page-node-id="IaBQgOxvcVL5CXDG4gApnT">醬烤雜菇</span></span><span class="price" data-page-node-id="KvX3fftxRMeQcXFNBLhvmq">$18</span></div><span class="en-name" data-page-node-id="luC1YzTByhhhvMPiYe44H5">Teriyaki Mixed Mushrooms</span></li>
         </ul>
       </div>
     </div>
 
-    <hr class="thick">
+    <hr class="thin" data-page-node-id="AHj7i7YAGQ94J7ems7kgjP">
 
-    <div class="promo">
-      <div class="promo-title">
-        <span class="zh">加配優惠</span>
-        <span class="en">Add-on Promotion</span>
-        <span class="note">轉凍飲加 $2 / +$2 for iced drink</span>
+    <div class="promo" data-page-node-id="poyBNzfl8EXHAY3uluxhCl">
+      <div class="promo-head" data-page-node-id="s7xeAUHei9GMoo3PnYW3SE">
+        <span class="zh" data-page-node-id="b2vQLju8ETIjRz8BHwUWkO">加配優惠</span><span class="en" data-page-node-id="h5izMeZuEmtbFaQqSBzvin">Add-on Promotion</span>
+        <span class="note" data-page-node-id="naYX6RWHDXP72Rs6RJ5sqt">轉凍飲加 $2 / +$2 for iced drink</span>
       </div>
-      <div class="drinks">
-        <div class="drink"><div class="zh">黑咖啡</div><div class="en">Black Coffee</div><div class="price">$20</div></div>
-        <div class="drink"><div class="zh">泡沫咖啡</div><div class="en">Cappuccino</div><div class="price">$25</div></div>
-        <div class="drink"><div class="zh">蘋果汁</div><div class="en">Apple Juice</div><div class="price">$27</div></div>
-        <div class="drink"><div class="zh">檸檬西柚氣泡水</div><div class="en">Lemon Grapefruit Sparkling Water</div><div class="price">$27</div></div>
-        <div class="drink"><div class="zh">拿鐵咖啡</div><div class="en">Caffè Latte</div><div class="price">$27</div></div>
-        <div class="drink"><div class="zh">平白咖啡</div><div class="en">Flat White</div><div class="price">$27</div></div>
-        <div class="drink"><div class="zh">檸檬紅茶</div><div class="en">Lemon Black Tea</div><div class="price">$25</div></div>
-        <div class="drink"><div class="zh">洛神花蜜桃氣泡水</div><div class="en">Roselle Peach Sparkling Water</div><div class="price">$25</div></div>
+      <div class="drinks" data-page-node-id="wSy3P8JnaOzTo5bBa0PQRx">
+        <div class="drink" data-page-node-id="bO8wB0U8N9OoSmb8hJlaVo"><div class="zh" data-page-node-id="tfjx746oYphmTX46rgtAGH">黑咖啡</div><span class="en" data-page-node-id="rIqA9kgbFdiAlUBmleJLog">Black Coffee</span><span class="price" data-page-node-id="7mQFWxx37ZQqjA9FMszLgH">$20</span></div>
+        <div class="drink" data-page-node-id="bdIEWGCBnatxdvL1tQfh7l"><div class="zh" data-page-node-id="QnCO54P7nj8RL1BabnrAbW">泡沫咖啡</div><span class="en" data-page-node-id="Mnxm9v7gFBjT9WwZbGpFnk">Cappuccino</span><span class="price" data-page-node-id="ZnZtIVRRuMvhUJjNbQooiw">$25</span></div>
+        <div class="drink" data-page-node-id="0XVHfF1JCHVdtQnyFZlvTq"><div class="zh" data-page-node-id="YRzrILoD8klJbGNvAENWJz">蘋果汁</div><span class="en" data-page-node-id="otTCTxnV5AuhViLGp0gpDk">Apple Juice</span><span class="price" data-page-node-id="rzqN5Dzd9A7nPs0B7kwyxW">$27</span></div>
+        <div class="drink" data-page-node-id="DohwmkC4dnXkWF1l0GHkYF"><div class="zh" data-page-node-id="XgNmwiY2mHPFRnQfz5e7vP">檸檬西柚氣泡水</div><span class="en" data-page-node-id="ePZHyFIselERL0HZF5ZKQZ">Lemon Grapefruit Sparkling Water</span><span class="price" data-page-node-id="teO3ktLo6XHEJChjqmTkwp">$27</span></div>
+        <div class="drink" data-page-node-id="ViWSvURvZHc1lA4oDcEuc3"><div class="zh" data-page-node-id="NLSyFF9hI3HAf41s3cJoy3">拿鐵咖啡</div><span class="en" data-page-node-id="bEdQHw8ivCowi8O5Ud6mQA">Caffè Latte</span><span class="price" data-page-node-id="R6LjOptVG94yZZAGxYyGZH">$27</span></div>
+        <div class="drink" data-page-node-id="Ppbghfmf9918VCn2lCMM6A"><div class="zh" data-page-node-id="HUgkviSRZqy2MCfVicfZOn">平白咖啡</div><span class="en" data-page-node-id="W8Rv0HkcFBklQMKSobwGHG">Flat White</span><span class="price" data-page-node-id="cPTyFdFxFOMkFbJcIZJkov">$27</span></div>
+        <div class="drink" data-page-node-id="CfDchqIX2YXBsHEWTAGPlE"><div class="zh" data-page-node-id="FFyaNa9TNBCNH06P7h5rO7">檸檬紅茶</div><span class="en" data-page-node-id="S8Kj2IMBkDLoMLZyJ63Hc1">Lemon Black Tea</span><span class="price" data-page-node-id="N2BbfUyJFpRSUTZnoKwe7C">$25</span></div>
+        <div class="drink" data-page-node-id="dA0L1zWBfEiP6s1aucr2MA"><div class="zh" data-page-node-id="2rg59yNEhTj6G7B516MPAa">洛神花蜜桃氣泡水</div><span class="en" data-page-node-id="ZAZLKTBPKQd1KHBBCwkafm">Roselle Peach Sparkling Water</span><span class="price" data-page-node-id="EiNUEtUsTUL5j0E02dIAXP">$25</span></div>
       </div>
     </div>
 
-    <div class="footer" style="padding-top: 22px;">
-      <div class="badges">
-        <div><span class="leaf">🌿</span>VEGAN</div>
-        <div><span class="moon">☪</span>HALAL</div>
+    <div class="footer" data-page-node-id="4ly0rnOcQqIvWcZ56TL3GR">
+      <div class="badges" data-page-node-id="H8y3D1aQyFn3bib3lqmNc1">
+        <div data-page-node-id="PoXNGLUxc319JhopFCiKdR"><span class="leaf" data-page-node-id="RQ2Qj9tDqyc6xtiuKGGRsI">🌿</span>VEGAN</div>
+        <div data-page-node-id="x6temEA7pGsi9IutKUILde"><span class="moon" data-page-node-id="YKHrKj3EY76fRKW8gLm2E3">☪</span>HALAL</div>
       </div>
-      <div class="takeaway">
-        <span class="zh">外賣另加 $2</span>
-        <span class="en">TAKEAWAY + $2</span>
+      <div class="takeaway" data-page-node-id="IHG5YzOKo2nqExdUx7u5Bi">
+        <span class="zh" data-page-node-id="6J9D7PxLLwVGUR4z1mBZ5y">外賣另加 $2</span>
+        <span class="en" data-page-node-id="CSeQ1y2gKWbOgUkCf8v3n1">TAKEAWAY + $2</span>
       </div>
     </div>
+
   </div>
 </section>
 
 <!-- ====================================================== -->
 <!-- 2. SALAD 沙律 -->
 <!-- ====================================================== -->
-<section id="sec-salad" class="page" style="margin-top: 28px;">
-  <div class="grain"></div>
-  <div class="container">
+<section id="sec-salad" class="page" style="margin-top: 28px;" data-page-node-id="2crhr196rbOy45mhCECuly">
+  <div class="grain" data-page-node-id="MiQdLQq5hxgBFelnu5nncC"></div>
+  <div class="container" data-page-node-id="prlbAkGcD6zsxwMEBKrrXB">
 
-    <div class="banner">
-      <div class="big">沙律</div>
-      <div class="en">Salad</div>
-      <div class="divider">11:00 – 15:00</div>
+    <div class="banner" data-page-node-id="aWd3YxzKtuOMI3xBxp7GjG">
+      <div class="big" data-page-node-id="mfDLPOHvC4LKKYulXFmEVU">沙律</div>
+      <div class="en" data-page-node-id="bSC8H0gGPVKkpFqCdNkBHD">Salad</div>
+      <div class="divider" data-page-node-id="C4XX2qAY1xBGCQb4YQOTlR">11:00 – 15:00</div>
     </div>
 
-    <div class="brand">
-      <img class="logo" src="sora-zen-logo.png" alt="SORA ZEN">
-      <div class="sub">Salad Bar &nbsp;|&nbsp; 11:00 – 15:00</div>
+    <div class="brand" data-page-node-id="vBnkyAEQF8jP3PipOS6RhJ">
+      <img class="logo" src="sora-zen-logo-cropped.png" alt="SORA ZEN" data-page-node-id="D6h6ZOy6VOEAPBvADNtaIX">
+      <div class="sub" data-page-node-id="dftnP2uet6isu6iBrqpOdD">Lunch Menu &nbsp;|&nbsp; 11:00 - 15:00</div>
     </div>
 
-    <hr class="thin">
+    <hr class="thin" data-page-node-id="IJxx79S0FHofZrHGZoaILE">
 
-    <div class="section-header" style="margin-top: 10px;">
-      <span class="zh">沙律</span><span class="en">Salad</span>
-    </div>
-    <ul class="menu" style="padding: 0 22px;">
-      <li><span class="name">鹽麴燒雞肉沙律 Grilled Shio Koji Chicken Salad</span><span class="price">$48</span></li>
-      <li><span class="name">炙燒牛小排沙律 Seared Beef Short Rib Salad</span><span class="price">$72</span></li>
-      <li><span class="name"><span class="leaf">🌿</span>牛油果豆腐沙律 Avocado and Tofu Salad</span><span class="price">$46</span></li>
-    </ul>
-
-    <hr class="thick">
-
-    <div class="steps">
-      <div class="title">
-        自選"主菜"和"主食" Pick Your Main &amp; Base <span class="price">$48</span>
+    <div class="salad-bowl-row" data-page-node-id="ZlULzj5MJ8G2Ce03Gxl8R6">
+      <div class="bowl" data-page-node-id="DCDAvpD7RPGRPDjWP1QFeV">
+        <img src="images/salad.png" alt="Salad" data-page-node-id="V05SGc6lG7KCBaSX0SFvnk">
+        <div class="label" data-page-node-id="SfdpfaEy5ZJYejoFYHEYlu">沙律 SALAD</div>
       </div>
+      <ul class="menu" style="padding: 0;" data-page-node-id="fwhHgQEWIXhwNngx8cGUCT">
+        <li data-page-node-id="OhSavaUcCRinPTrD1sqBky"><div class="line" data-page-node-id="wtMAlMrwIzF5IPm84W8SMr"><span class="zh-name" data-page-node-id="LGmRgMtv6uBRSeDYvuoApH">鹽麴燒雞肉沙律</span><span class="price" data-page-node-id="y06Y2heNGBqrJzBFKr6Yt4">$48</span></div><span class="en-name" data-page-node-id="DQx7cd6nJ0ufdLqmEVtK1o">Grilled Shio Koji Chicken Salad</span></li>
+        <li data-page-node-id="hoFKsF796B1CGKE5qFnYd2"><div class="line" data-page-node-id="HFcAA1AXGuOonAfYEunNlR"><span class="zh-name" data-page-node-id="BeQPAgk4H0zsjuOaCkj008">炙燒牛小排沙律</span><span class="price" data-page-node-id="Yx8W8jK4LiFvQWjBi9ck93">$72</span></div><span class="en-name" data-page-node-id="imFieEO2uht9d9xZHCiPiF">Seared Beef Short Rib Salad</span></li>
+        <li data-page-node-id="ouQ8fDcFW76XPMurVVgQ8H"><div class="line" data-page-node-id="COyLfFLivD6yuRxhDVJnCg"><span class="zh-name" data-page-node-id="dsfFxK3DSOt0HJjBqWArJW"><span class="leaf" data-page-node-id="dmx5AwQZiu5OPCEkVoFPx3">🌿</span>牛油果豆腐沙律</span><span class="price" data-page-node-id="P4BRFPWmur2rwQcowtWf26">$46</span></div><span class="en-name" data-page-node-id="BdGgMqP4jyuBrJvf01R2K6">Avocado and Tofu Salad</span></li>
+      </ul>
+    </div>
 
-      <div class="step">
-        <div class="head">第一步：自選主食一款 <span class="en">Step 1: Choice of 1 Carb Base</span></div>
-        <div class="opts">通心麵 · 薯蓉 · 烘烤吐司粒 / Macaroni · Mashed Potatoes · Croutons</div>
+    <hr class="thin" data-page-node-id="I2yuU1dETVQW1gk4g3sere">
+
+    <div class="pick-your-main" data-page-node-id="CBvOhMOm589xwwjtCkhezA">
+      自選"主菜"和"主食" Pick Your Main &amp; Base <span class="price" data-page-node-id="7jJZQneLq7P1oOjTzWBWF7">$48</span>
+    </div>
+
+    <div class="veggie-center" data-page-node-id="oFBXBIkOQAnrKeSpoAaKxJ">
+      <img src="images/mixed-veggies.png" alt="Vegetables &amp; Fruits" data-page-node-id="jMJwmWPfdTGnw5QRIwbywA">
+      <div class="label" data-page-node-id="dwzHbOTj9pbMc8dn3bzCDi">
+        綜合蔬菜 &amp; 綜合水果
+        <span class="en" data-page-node-id="nct1JXDqbjSO92jQLD5lBC">Vegetables &amp; Fruits</span>
       </div>
+    </div>
 
-      <div class="step">
-        <div class="head">第二步：自選主菜兩款 <span class="en">Step 2: Choice of 2 Main Courses</span></div>
-        <div class="opts">
-          雞胸肉 · 煙燻三文魚 · 鮪魚 · 蝦 &nbsp; / &nbsp; <span class="leaf">🌿</span> 牛油果 · 豆腐 · 水煮蛋 · 溫泉蛋<br>
-          Chicken breast · Smoked salmon · Tuna · Shrimp &nbsp; / &nbsp; Tofu · Avocado · Boiled egg · Onsen tamago
+    <div class="steps" data-page-node-id="l3fkzigmFtEHpVQFyVl7qj">
+      <div class="step" data-page-node-id="cJE9EJrLmnUyn86V89RNWo"><span class="zh" data-page-node-id="rV7gU0EivMnqEDHu3svsvN">第一步：自選主食一款</span> <span class="en" data-page-node-id="WubGJt8DVfuYqKQImMUvzP">Step 1: Choice of 1 Carb Base</span>
+        <div class="opts" data-page-node-id="201BNIoqEbTDmaQC6PNCHf">通心麵，薯蓉，烘烤吐司粒 <span class="en" data-page-node-id="f0L5YVoRKTRmSeapOuv9j4">Macaroni，Mashed Potatoes，Croutons</span></div>
+      </div>
+      <div class="step" data-page-node-id="duXADAmYRYKlkoEXY7Hx4V"><span class="zh" data-page-node-id="JPkZpPnfVhrUAgfjukSxJc">第二步：自選主菜兩款</span> <span class="en" data-page-node-id="UgKNA7nj5OEOMHkNWZCrAu">Step 2: Choice of Two Main Courses</span>
+        <div class="opts" data-page-node-id="uJ2ZOEDo4TaWJ6BuiD382J">
+          雞胸肉，煙燻三文魚，鮪魚，蝦，<span class="leaf" data-page-node-id="aqIF2QFpHL34xbGMAqmusR">🌿</span>牛油果，豆腐，水煮蛋，溫泉蛋<br data-page-node-id="kwzbqWS5krDDknKvw40z57">
+          <span class="en" data-page-node-id="8tZjK9SIAhS09OiNLAHVGV">Chicken breast，Smoked salmon，Tuna，Shrimp，&nbsp; Tofu，Avocado，Boiled egg，Onsen tamago</span>
         </div>
       </div>
-
-      <div class="step">
-        <div class="head">第三步：調味料（任選 1 款） <span class="en">Step 3: Choice of 1 Seasoning</span></div>
-        <div class="opts">
-          胡麻醬 · 和風番茄汁 · 千島醬 · 黑醋汁<br>
-          Sesame · Tomato · Thousand Island · Balsamic Vinaigrette
+      <div class="step" data-page-node-id="4Zy6mjmzdCr61NVLHCuu2Y"><span class="zh" data-page-node-id="RC8pskD5d4VmuxeWw84Atl">第三步：調味料（任選 1 款）</span> <span class="en" data-page-node-id="ufMxmFjpfyhzR9irSH7YaM">Step 3: Choice of 1 Seasoning</span>
+        <div class="opts" data-page-node-id="WDs3g2zJ1Fczd3FCogIVzj">胡麻醬，和風番茄汁，千島醬，黑醋汁<br data-page-node-id="xfa152oeMYr82lgEKX3PBY">
+          <span class="en" data-page-node-id="Z2APW9Y4FTPfDtNA85ppmy">Sesame Dressing、 Tomato Dressing、 Thousand Island Dressing、 Balsamic Vinaigrette</span>
         </div>
       </div>
     </div>
 
-    <hr class="thick">
+    <hr class="thin" data-page-node-id="kHxGHZTLoG7e2s8dVRhXpK">
 
-    <div class="promo">
-      <div class="promo-title">
-        <span class="zh">加配優惠</span>
-        <span class="en">Add-on Promotion</span>
-        <span class="note">轉凍飲加 $2 / +$2 for iced drink</span>
+    <div class="promo" data-page-node-id="71evJOU5F0i9jwzl3QxAsG">
+      <div class="promo-head" data-page-node-id="GC5i0coElprv7GsWDoraCV">
+        <span class="zh" data-page-node-id="S00oPR6FkSxFC60miGEIHu">加配優惠</span><span class="en" data-page-node-id="DLOrFbTXBfB92IkBP7s9EW">Add-on Promotion</span>
+        <span class="note" data-page-node-id="7XaAPjulJ00JaHvJnFWI7H">轉凍飲加 $2 / +$2 for iced drink</span>
       </div>
-      <div class="drinks">
-        <div class="drink"><div class="zh">黑咖啡</div><div class="en">Black Coffee</div><div class="price">$20</div></div>
-        <div class="drink"><div class="zh">泡沫咖啡</div><div class="en">Cappuccino</div><div class="price">$25</div></div>
-        <div class="drink"><div class="zh">蘋果汁</div><div class="en">Apple Juice</div><div class="price">$27</div></div>
-        <div class="drink"><div class="zh">檸檬西柚氣泡水</div><div class="en">Lemon Grapefruit Sparkling Water</div><div class="price">$27</div></div>
-        <div class="drink"><div class="zh">拿鐵咖啡</div><div class="en">Caffè Latte</div><div class="price">$27</div></div>
-        <div class="drink"><div class="zh">平白咖啡</div><div class="en">Flat White</div><div class="price">$27</div></div>
-        <div class="drink"><div class="zh">檸檬紅茶</div><div class="en">Lemon Black Tea</div><div class="price">$25</div></div>
-        <div class="drink"><div class="zh">洛神花蜜桃氣泡水</div><div class="en">Roselle Peach Sparkling Water</div><div class="price">$25</div></div>
+      <div class="drinks" data-page-node-id="s2p7huFL6vSFVk7PqLBanH">
+        <div class="drink" data-page-node-id="Gkz39GxGSjQBRTCt1XIAgj"><div class="zh" data-page-node-id="ONjanbtI35j9GGkEdnB9GH">黑咖啡</div><span class="en" data-page-node-id="1vY0KcAOrIcZmjLKnmuCWh">Black Coffee</span><span class="price" data-page-node-id="Mwp8h8CvOZB7klapj5M6Bj">$20</span></div>
+        <div class="drink" data-page-node-id="ytIVK0zcDOpGv3F10JGygj"><div class="zh" data-page-node-id="FpP9M9quCUfb4zZriAMceb">泡沫咖啡</div><span class="en" data-page-node-id="r3wsZaxkyGTMXFLP0IX6Y5">Cappuccino</span><span class="price" data-page-node-id="8WMEyxpc1b8GdmPgkAHOsP">$25</span></div>
+        <div class="drink" data-page-node-id="JvCZgbupikuu8LGxepTRaS"><div class="zh" data-page-node-id="O3ENGYSPB2TcPLu0Agcz7q">蘋果汁</div><span class="en" data-page-node-id="eCaSXzl98o6ODAKD09hItd">Apple Juice</span><span class="price" data-page-node-id="iKQT5nYaCNoXBpfQqH1STh">$27</span></div>
+        <div class="drink" data-page-node-id="K3JFFFTRvifr8EfOOqif2Q"><div class="zh" data-page-node-id="KA1FbSeVfvc9wcRCrdYyQz">檸檬西柚氣泡水</div><span class="en" data-page-node-id="8t7oz98uwQkADLA617oqoM">Lemon Grapefruit Sparkling Water</span><span class="price" data-page-node-id="fKmSdt9TbrwlBAWZRdsLNq">$27</span></div>
+        <div class="drink" data-page-node-id="YqA1KyQ2Gqp5M8Z5VkTQHl"><div class="zh" data-page-node-id="C25Zturso7YIv892y0jFXX">拿鐵咖啡</div><span class="en" data-page-node-id="BpE5MiOIkVBRKLJHMWmlEl">Caffè Latte</span><span class="price" data-page-node-id="0c27q6Qahejo1Tur4klZRB">$27</span></div>
+        <div class="drink" data-page-node-id="G8nFmMFWAVH27MbTB5YkOW"><div class="zh" data-page-node-id="CCr4aymZqJQ5ZU4HEimqGa">平白咖啡</div><span class="en" data-page-node-id="5bmH9z5mr4oazPTZiXqopQ">Flat White</span><span class="price" data-page-node-id="299japTgbh70AwejPHicGP">$27</span></div>
+        <div class="drink" data-page-node-id="a5cy5tyMFJUmZetDLC4DhI"><div class="zh" data-page-node-id="5sHpQXjDGZYBi2447F4B0G">檸檬紅茶</div><span class="en" data-page-node-id="DG4WDf2kKgwheW3BcSlF2M">Lemon Black Tea</span><span class="price" data-page-node-id="e06uzGPtAVjmqLQ3KSRzeW">$25</span></div>
+        <div class="drink" data-page-node-id="w3418jh0rpcoA15UjGJjjM"><div class="zh" data-page-node-id="V114Y3Dsod3tfMsBWBmJcb">洛神花蜜桃氣泡水</div><span class="en" data-page-node-id="nIvkCpXQwN41BjQDK5IqmJ">Roselle Peach Sparkling Water</span><span class="price" data-page-node-id="yClmljdKPSnF72fazDN0ad">$25</span></div>
       </div>
     </div>
 
-    <div class="footer" style="padding-top: 22px;">
-      <div class="badges">
-        <div><span class="leaf">🌿</span>VEGAN</div>
-        <div><span class="moon">☪</span>HALAL</div>
+    <div class="footer" data-page-node-id="34AsAWcDFCuIluCh9qfeXL">
+      <div class="badges" data-page-node-id="giyrGv6wCEINxNWyFFSCV6">
+        <div data-page-node-id="MYgvaL3XVHi5mZAF9m5PKn"><span class="leaf" data-page-node-id="J2oiCjLgx4aeLlPRp1G4b9">🌿</span>VEGAN</div>
+        <div data-page-node-id="AIG5aTUzP7BAtMDUrqpJN2"><span class="moon" data-page-node-id="TNagBkQakoJ4YIVn9Jj30d">☪</span>HALAL</div>
       </div>
-      <div class="takeaway">
-        <span class="zh">外賣另加 $2</span>
-        <span class="en">TAKEAWAY + $2</span>
+      <div class="takeaway" data-page-node-id="VjNCtMlNFmRWYzNFRuibin">
+        <span class="zh" data-page-node-id="x2CpF9SX8q4n7frGoE40ID">外賣另加 $2</span>
+        <span class="en" data-page-node-id="m4GlVzj0E2Aa14ykBADqWI">TAKEAWAY + $2</span>
       </div>
     </div>
+
   </div>
 </section>
 
 <!-- ====================================================== -->
-<!-- 3. AFTERNOON TEA 下午茶 -->
+<!-- 3. AFTERNOON TEA -->
 <!-- ====================================================== -->
-<section id="sec-tea" class="page" style="margin-top: 28px;">
-  <div class="grain"></div>
-  <div class="container">
+<section id="sec-tea" class="page" style="margin-top: 28px;" data-page-node-id="7ZtJdMr6FSvp49nXRt7ZOr">
+  <div class="grain" data-page-node-id="QFx6PCGxgfFv4nKC8cZT5H"></div>
+  <div class="container" data-page-node-id="ZuRK9mLPHSjzytsYlcphtx">
 
-    <div class="banner">
-      <div class="big">下午茶</div>
-      <div class="en">Afternoon Tea</div>
-      <div class="divider">15:00 – 17:00</div>
+    <div class="banner" data-page-node-id="SQyeVHEz71MH03ccKEizgq">
+      <div class="big" data-page-node-id="DqF6MntAYBitekdi95Tjre">下午茶</div>
+      <div class="en" data-page-node-id="V5Gt02qnox6DRRExhFoiuQ">Afternoon Tea</div>
+      <div class="divider" data-page-node-id="qSRTddXZRnUbYfFIEC3AeQ">15:00 – 17:00</div>
     </div>
 
-    <div class="brand">
-      <img class="logo" src="sora-zen-logo.png" alt="SORA ZEN">
-      <div class="sub">Tea Set &nbsp;|&nbsp; 15:00 – 17:00</div>
+    <div class="brand" data-page-node-id="9bNGCJFqQA299LuqA4mAXy">
+      <img class="logo" src="sora-zen-logo-cropped.png" alt="SORA ZEN" data-page-node-id="aMRPbOh2mKCFSt2SPvJdR6">
+      <div class="sub" data-page-node-id="t4PKUwfT7cm9XwtCPOEqGA">TEA SET &nbsp;|&nbsp; 15:00 - 17:00</div>
     </div>
 
-    <hr class="thin">
+    <hr class="thin" data-page-node-id="u1fDAyW8TzpF3q2M8WibBy">
 
-    <div class="combo">
-      <div class="combo-title">
-        <span class="zh">加配</span>
-        <span class="en">Combo Add-On:</span>
-      </div>
-      <div class="combo-grid">
-        <div>生菜沙律 Lettuce Salad <strong>$6</strong></div>
-        <div>湯 Soup <strong>$6</strong></div>
-        <div>茶 Tea <strong>$3</strong></div>
-      </div>
-    </div>
-
-    <div class="section-header"><span class="zh">飯</span><span class="en">Rice</span></div>
-    <div class="two-col">
-      <ul class="menu">
-        <li><span class="name">薑汁牛燒肉丼飯 Ginger Beef Donburi</span><span class="price">$58</span></li>
-        <li><span class="name">牛油照燒雞肉丼飯 Buttery Teriyaki Chicken Donburi</span><span class="price">$42</span></li>
-      </ul>
-      <ul class="menu">
-        <li><span class="name">秘製唐揚雞肉丼 Chicken Donburi</span><span class="price">$52</span></li>
-        <li><span class="name"><span class="leaf">🌿</span>燉野菜丼 Stewed Vegetables Donburi</span><span class="price">$42</span></li>
+    <div class="combo" data-page-node-id="TncK9lhhhY3drPDVvBqUeJ">
+      <div class="title" data-page-node-id="xnqfW5b22TUP7MaYQba2sH">加配 <span class="en" data-page-node-id="zK7XRvyHfTtXaGwHj9nKZt">Combo Add-On:</span></div>
+      <ul data-page-node-id="BuWrYDMYAiZsy5YHftYLLD">
+        <li data-page-node-id="gW2MNdRwkBm4vK4nQyBz8a">生菜沙律 Lettuce Salad <span class="price" data-page-node-id="eU7TCzjQ3TAsv8cCG38kvH">$6</span></li>
+        <li data-page-node-id="hLq3PkV8nM7wY2tN6vR4sX">湯 Soup <span class="price" data-page-node-id="6DyW38XXkdt3JxOEkiBgnx">$6</span></li>
+        <li data-page-node-id="bC9VnK7mM2sX8tQ5nW3zL1">&amp; 茶 Tea <span class="price" data-page-node-id="2QziVko0mLIDHpu0wOoBGa">$3</span></li>
+        <li data-page-node-id="pT5YwQrZbN8vK3mL9sX2cF">日式咖哩醬 Japanese Curry Sauce <span class="price" data-page-node-id="RrHfaxr18m951teKGF7czu">$12</span></li>
       </ul>
     </div>
 
-    <div class="section-header"><span class="zh">三文治</span><span class="en">Sandwich</span></div>
-    <div class="two-col">
-      <ul class="menu">
-        <li><span class="name">牛小排三文治 Short Rib Sandwich</span><span class="price">$62</span></li>
-        <li><span class="name">酥炸魚漢堡 Fried Fish Burger</span><span class="price">$48</span></li>
-        <li><span class="name">酥炸軟殼蟹漢堡 Fried Soft-Shell Crab Burger</span><span class="price">$58</span></li>
-      </ul>
-      <ul class="menu">
-        <li><span class="name"><span class="leaf">🌿</span>牛油果煙燻三文魚多士 Avocado &amp; Smoked Salmon Toast</span><span class="price">$38</span></li>
-        <li><span class="name">法式吐司 French Toast</span><span class="price">$32</span></li>
-        <li><span class="name"><span class="leaf">🌿</span>酥炸大啡菇漢堡 Fried Portobello Mushroom Burger</span><span class="price">$46</span></li>
-      </ul>
-    </div>
+    <hr class="thin" data-page-node-id="Y2UQxv0sRMD6AG3ywPowWW">
 
-    <div class="section-header"><span class="zh">分享小食</span><span class="en">Happy to Share</span></div>
-    <div class="two-col">
-      <ul class="menu">
-        <li><span class="name">秘製唐揚雞翼 Karaage Fried Chicken Wings</span><span class="price">$24</span></li>
-        <li><span class="name">秘製唐揚炸雞 Karaage Fried Chicken</span><span class="price">$22</span></li>
-        <li><span class="name">柴魚章魚燒 Takoyaki with Bonito &amp; Octopus</span><span class="price">$28</span></li>
-        <li><span class="name">炸薯條 明太子沙律醬 French Fries with Mentai Mayo</span><span class="price">$28</span></li>
+    <div class="three-col" data-page-node-id="rwdSx0pHMw8phmyX79CUU9">
+      <ul class="menu" data-page-node-id="IpKxbWz0KObFMxSlVvBbrF">
+        <li data-page-node-id="vr8zWxxuDp7FV6KPXTl976"><div class="line" data-page-node-id="ADr1t2WLEFUk9Yx3loqy1O"><span class="zh-name" data-page-node-id="IDExam7jQitLrOvB95zGck">薑汁牛燒肉丼飯</span><span class="price" data-page-node-id="cL1E3u7bQctSesGtsAiUb4">$58</span></div><span class="en-name" data-page-node-id="87JICy8IyEt8Io6bn9SQvv">Ginger Beef Donburi</span></li>
+        <li data-page-node-id="rLpSzj8vUagSjTdxcMF0ZD"><div class="line" data-page-node-id="UjQb6CHwzyDvwQcX0fQJBP"><span class="zh-name" data-page-node-id="ZZ4dUPzuwDjzqaqvDinbsm">牛油照燒雞肉丼飯</span><span class="price" data-page-node-id="l58LXx2weTF2gsgvZ0oLJy">$42</span></div><span class="en-name" data-page-node-id="i2rzCiWaA2JXdsMnHfxbLM">Buttery Teriyaki Chicken Donburi</span></li>
       </ul>
-      <ul class="menu">
-        <li><span class="name">唐揚魷魚圈 Karaage Squid Rings</span><span class="price">$30</span></li>
-        <li><span class="name">主廚精選炸物拼盤 Chef's Special Fried Platte</span><span class="price">$58</span></li>
-        <li><span class="name"><span class="leaf">🌿</span>墨西哥粟米片 配雙色醬 Nachos with Mixed Sauces</span><span class="price">$38</span></li>
+      <div class="center" data-page-node-id="3nBqL6pRSx1d2ukfJaGDUi">
+        <img src="images/rice.png" alt="Rice" data-page-node-id="HAjAAI9Ko5o2Dw5LmkgUU4">
+        <div class="label" data-page-node-id="m5T42BJXdbqg1pKC6kNfTL">RICE</div>
+      </div>
+      <ul class="menu" data-page-node-id="GDsC1DfDC5ZWFLUcyXtmqS">
+        <li data-page-node-id="vb3bGIVax33lggWVO1jrcn"><div class="line" data-page-node-id="JDR7B59GUM7IGHzlmiTBsj"><span class="zh-name" data-page-node-id="HhJ5ABPUBnbFqvVCIqOxbA">秘製唐揚雞肉丼</span><span class="price" data-page-node-id="egXqFAT8CBkeLKjCbOfYVG">$52</span></div><span class="en-name" data-page-node-id="Gp2Z3aLvfRYMe0NsVphfCW">Chicken Donburi</span></li>
+        <li data-page-node-id="X5ciqPXET0VFXesEdgClBr"><div class="line" data-page-node-id="edmHcIpZOTMku5VzEmfJsu"><span class="zh-name" data-page-node-id="Sck7fA4fclCWpnE9mEkOnw"><span class="leaf" data-page-node-id="3BvLKcYx81jiLu2U9HN0G3">🌿</span>燉野菜丼</span><span class="price" data-page-node-id="qtkJso0WSGZqCG65KTeGcn">$42</span></div><span class="en-name" data-page-node-id="AYshdQpEAjLiu7ho7BPxEt">Stewed Vegetables Donburi</span></li>
       </ul>
     </div>
 
-    <hr class="thick">
+    <hr class="thin" data-page-node-id="LIQ0u05hvNGzCBpd7n8Cbq">
 
-    <div class="promo">
-      <div class="promo-title">
-        <span class="zh">加配優惠</span>
-        <span class="en">Add-on Promotion</span>
-        <span class="note">轉凍飲加 $2 / +$2 for iced drink</span>
+    <div class="three-col" data-page-node-id="GRrS8o8HyHEUu7g0ZY925d">
+      <ul class="menu" data-page-node-id="NPeHtGiWx7CbWsyI8qFifq">
+        <li data-page-node-id="I390J98waH2l52QZavCM2m"><div class="line" data-page-node-id="vrzArtRw26xcAZKYJS2TlT"><span class="zh-name" data-page-node-id="eIy1eAs607TTo67dvmiAQY">牛小排三文治</span><span class="price" data-page-node-id="6P5JkgD4Dq6aXUJmjjbmX7">$62</span></div><span class="en-name" data-page-node-id="gsm4uc2ogRu27a7bUn2YKa">Short Rib Sandwich</span></li>
+        <li data-page-node-id="IAkfBdLh6PNvI2RvXxH8a1"><div class="line" data-page-node-id="P1ZZv3gy1Qa0HsJmy3gYGb"><span class="zh-name" data-page-node-id="G9vk2LnkXZEepE2Dkwtag1">酥炸魚漢堡</span><span class="price" data-page-node-id="fPAX5OjF1Q27GViK9Lvlx7">$48</span></div><span class="en-name" data-page-node-id="KknYTuoI5T2VR09nNOcGg8">Fried Fish Burger</span></li>
+        <li data-page-node-id="NYsYxcAduHEImC71hXVKRo"><div class="line" data-page-node-id="HU87hVJ0pCoQyAYBPcDkjo"><span class="zh-name" data-page-node-id="403Y6BPHSyZp4ItxkOIRdh">酥炸軟殼蟹漢堡</span><span class="price" data-page-node-id="MG84YghkUnmSqsCREzU0Hf">$58</span></div><span class="en-name" data-page-node-id="fwsooTKPM76nRuepvFKhil">Fried Soft-Shell Crab Burger</span></li>
+      </ul>
+      <div class="center" data-page-node-id="H9kTmkHdtkfny5r4WHYTjT">
+        <img src="images/sandwich.png" alt="Sandwich" data-page-node-id="BDSQ15FLV5Mrnl9EPnYmEq">
+        <div class="label" data-page-node-id="4kl3Uxq5T2PqEHe249Uphp">SANDWICH</div>
+        <hr class="divider-bold" style="margin: 14px 14px;" data-page-node-id="XNDvkKL0TGvTNbMmABlQhE">
+        <img src="images/burger.png" alt="Burger" data-page-node-id="fV3e7zTp9XSZEjQfmlCk1J">
+        <div class="label" data-page-node-id="BY436HkVvVYda9yXcS9tgZ">BURGER</div>
       </div>
-      <div class="drinks">
-        <div class="drink"><div class="zh">黑咖啡</div><div class="en">Black Coffee</div><div class="price">$20</div></div>
-        <div class="drink"><div class="zh">泡沫咖啡</div><div class="en">Cappuccino</div><div class="price">$25</div></div>
-        <div class="drink"><div class="zh">蘋果汁</div><div class="en">Apple Juice</div><div class="price">$27</div></div>
-        <div class="drink"><div class="zh">檸檬西柚氣泡水</div><div class="en">Lemon Grapefruit Sparkling Water</div><div class="price">$27</div></div>
-        <div class="drink"><div class="zh">拿鐵咖啡</div><div class="en">Caffè Latte</div><div class="price">$27</div></div>
-        <div class="drink"><div class="zh">平白咖啡</div><div class="en">Flat White</div><div class="price">$27</div></div>
-        <div class="drink"><div class="zh">檸檬紅茶</div><div class="en">Lemon Black Tea</div><div class="price">$25</div></div>
-        <div class="drink"><div class="zh">洛神花蜜桃氣泡水</div><div class="en">Roselle Peach Sparkling Water</div><div class="price">$25</div></div>
+      <ul class="menu" data-page-node-id="9wSnHA4xlmU5k8Og58yUfK">
+        <li data-page-node-id="zpqF7qFwjC5ZYHhUZJpOuA"><div class="line" data-page-node-id="GbthDMTrG4UgEfs2o3ItP9"><span class="zh-name" data-page-node-id="ACE9nEB0U6Jcse7T8O934W"><span class="leaf" data-page-node-id="74xX9UuOYjGZtJb6Kk1TNN">🌿</span>牛油果煙燻三文魚多士</span><span class="price" data-page-node-id="u9wDAStWK8CQR6MDCvxsBC">$38</span></div><span class="en-name" data-page-node-id="US5u9x1eAkgtKg3IHDVbvC">Avocado &amp; Smoked Salmon Toast</span></li>
+        <li data-page-node-id="D58JnAghoteHa0mZ75U93u"><div class="line" data-page-node-id="2zj2HJfjsSmyMbXAAmB8hW"><span class="zh-name" data-page-node-id="ycvslCt7JDrbDMG4h7moZB">法式吐司</span><span class="price" data-page-node-id="Zfs1gLp6BkXb1g2tvclzMB">$32</span></div><span class="en-name" data-page-node-id="JCr7AipfX8QEpcmqo2pDIB">French Toast</span></li>
+        <li data-page-node-id="bFoIZBUA4fGvLiu0R69O7r"><div class="line" data-page-node-id="Orp81xnuQfRI1cqhLhJmUD"><span class="zh-name" data-page-node-id="GRDzh5MHZPjbaem9agUfE9"><span class="leaf" data-page-node-id="2tqjQ0za5nCy66IDzkHv3C">🌿</span>酥炸大啡菇漢堡</span><span class="price" data-page-node-id="HI3y6eDmuGADs2yIx0BOPQ">$46</span></div><span class="en-name" data-page-node-id="vIOTaqYFFvRcgkOWZht5Gq">Fried Portobello Mushroom Burger</span></li>
+      </ul>
+    </div>
+
+    <hr class="thin" data-page-node-id="FSgBxQfTBDNHtvtZyKvHHm">
+
+    <div class="three-col" data-page-node-id="7hxu9dX1Eiy6TO4ADP4sk3">
+      <ul class="menu" data-page-node-id="1W1ziqXKfBx7uY0HFaqrHY">
+        <li data-page-node-id="TegtglXdM3tstLrqHcUHNg"><div class="line" data-page-node-id="IX52L0f2luA1eCEXq6gzif"><span class="zh-name" data-page-node-id="3aGj5pOHyjLg9mrbxtRxIJ">秘製唐揚雞翼</span><span class="price" data-page-node-id="0NqonGY6UGLcCXoBqTq9Iw">$24</span></div><span class="en-name" data-page-node-id="fZOAn1EtAQVmhvzbqVtrKj">Karaage Fried Chicken Wings</span></li>
+        <li data-page-node-id="cbTojZJ0HXBXQRJA3hOFwr"><div class="line" data-page-node-id="nRmZBjtYo7JWKvHWcZVoTX"><span class="zh-name" data-page-node-id="Nl5ZWjqZLBv4do2W1r3Rfp">秘製唐揚炸雞</span><span class="price" data-page-node-id="I5mIbxLLLRGD0kkNbrNn0W">$22</span></div><span class="en-name" data-page-node-id="wPOCSmqJjC8fkKChRp5aPs">Karaage Fried Chicken</span></li>
+        <li data-page-node-id="WeAZPoegAkYyWJnlQR6WmY"><div class="line" data-page-node-id="6BWAB6da4tOYw7GSAXZ5R7"><span class="zh-name" data-page-node-id="BGaVGf6sJGwedWoVrX4cWs">柴魚章魚燒</span><span class="price" data-page-node-id="RgpB1MkfE0VfuiedbAzACF">$28</span></div><span class="en-name" data-page-node-id="wzDIjNDZkGLRc3pPAtEaCV">Takoyaki with Bonito &amp; Octopus</span></li>
+      </ul>
+      <div class="center" data-page-node-id="HqyOA06nVJw5wqjllurrAV">
+        <div class="label" style="margin-top: 14px; letter-spacing: 5px; line-height: 1.5;" data-page-node-id="NmLZxtxmsCK10AXc8QKPyE">HAPPY<br data-page-node-id="Sjsml3KXNemov4mtbaEHYb">TO<br data-page-node-id="PnDMDzE7EzHykwwdZe8kZ1">SHARE</div>
+      </div>
+      <ul class="menu" data-page-node-id="kxyU0O6Ch7E83yDiDuZ7ab">
+        <li data-page-node-id="jdrIZR3y3xKjR2xp4isKqa"><div class="line" data-page-node-id="pg8mtGvOtGyqsrwQdzgF6W"><span class="zh-name" data-page-node-id="1dMEcUUnE9i7AvyOr2Fxhf">炸薯條 明太子沙律醬</span><span class="price" data-page-node-id="JxJJAEeoPlnHqwQnppVtsQ">$28</span></div><span class="en-name" data-page-node-id="KErtLX3Dc0vPwFroDIsigM">French Fries with Mentai Mayo</span></li>
+        <li data-page-node-id="fYoBoezVU3UVPnDHS3rTYr"><div class="line" data-page-node-id="7v3gY55Y1OPnCvNEktGJV6"><span class="zh-name" data-page-node-id="GqPfHkXRyJc8zOGN31C9ti">唐揚魷魚圈</span><span class="price" data-page-node-id="9tYw3Hubi50ZGFeebrGCJ5">$30</span></div><span class="en-name" data-page-node-id="uiEbcHTRyV9dLGnA0drHgl">Karaage Squid Rings</span></li>
+        <li data-page-node-id="Y455ALTQR7UTtoXp3cQsuw"><div class="line" data-page-node-id="Eeu6rNT3iaOwxcCF8nRu8s"><span class="zh-name" data-page-node-id="RZritaQSSNSOfHGHPEnHf5">主廚精選炸物拼盤</span><span class="price" data-page-node-id="yioeF6WAKO1OP2XrUVNBpk">$58</span></div><span class="en-name" data-page-node-id="fcGEIVVE3s7WcJyqoFRKCd">Chef's Special Fried Platte</span></li>
+        <li data-page-node-id="0d033hGmHMMHK5pHUyIOiC"><div class="line" data-page-node-id="10iHsGJlzHTxEXjIVoeFgd"><span class="zh-name" data-page-node-id="oWwkXIMOypD4Ca7LxQ7qIj"><span class="leaf" data-page-node-id="AOJnKDOWyNb3lEsozCZuwb">🌿</span>墨西哥粟米片 配雙色醬</span><span class="price" data-page-node-id="3Ux8K0aKdEN2FAPpdD6Dpt">$38</span></div><span class="en-name" data-page-node-id="6nWx3RBEhAuRuIgDLtmche">Nachos with Mixed Sauces</span></li>
+      </ul>
+    </div>
+
+    <hr class="thin" data-page-node-id="d7c07vugB6tinvvfAriwUT">
+
+    <div class="promo" data-page-node-id="xPaXNOsxK2UPmeNnvCJCmx">
+      <div class="promo-head" data-page-node-id="3VxX8YYOBesywgGyYEba7a">
+        <span class="zh" data-page-node-id="ZHsZLnhtsODSWJNOLfgtIu">加配優惠</span><span class="en" data-page-node-id="5yF19Y76Wgy6yDcz8o5EL1">Add-on Promotion</span>
+        <span class="note" data-page-node-id="9rzA2EuzB1g8IDnXloWX6i">轉凍飲加 $2 / +$2 for iced drink</span>
+      </div>
+      <div class="drinks" data-page-node-id="JWGQ2rs0dejZTlQiIOyjvR">
+        <div class="drink" data-page-node-id="kej4zRyyBtbHGnvipdubun"><div class="zh" data-page-node-id="ZxRDq3c78A6jTQZWz4eQEC">黑咖啡</div><span class="en" data-page-node-id="nEazrV5oGLkjmdvEvTk7BK">Black Coffee</span><span class="price" data-page-node-id="6biMK7sU10zZvhVAHUWHWv">$20</span></div>
+        <div class="drink" data-page-node-id="BoYnFbQqpwHBLwOUmWSC7G"><div class="zh" data-page-node-id="MUzn1bzmrHxE2UY6tl0CXA">泡沫咖啡</div><span class="en" data-page-node-id="Ax9P4ZJCAVDZANUqe3yqqF">Cappuccino</span><span class="price" data-page-node-id="ckBfTAmwucymDOXK9lJm8l">$25</span></div>
+        <div class="drink" data-page-node-id="Kpjezt3Jsb6XH0qyC57ECa"><div class="zh" data-page-node-id="kAzpR7P2pdmhqbCA2oEPGS">蘋果汁</div><span class="en" data-page-node-id="XpaDVCsv0757MJ4UArYGQA">Apple Juice</span><span class="price" data-page-node-id="UBudQjNoSYwBPhhdoCiU4n">$27</span></div>
+        <div class="drink" data-page-node-id="wWmU1RdHGm844XywW3pSFp"><div class="zh" data-page-node-id="cgh119nY5DAkDdwlTUBO6w">檸檬西柚氣泡水</div><span class="en" data-page-node-id="5ADBPErF4E4mKocbAcCGtb">Lemon Grapefruit Sparkling Water</span><span class="price" data-page-node-id="Mh2X3EOiF6v74fdVm6Hq9y">$27</span></div>
+        <div class="drink" data-page-node-id="QDovUqZxP1LA3GAXNKJOVn"><div class="zh" data-page-node-id="FDqOEAIyoFLHRb9NzTYbTH">拿鐵咖啡</div><span class="en" data-page-node-id="JEgEprIPr6L8eqwfG2gplr">Caffè Latte</span><span class="price" data-page-node-id="i6gMbcKrIos031lirvqiE1">$27</span></div>
+        <div class="drink" data-page-node-id="Av1KYs38W5c9ydHAJvo54Z"><div class="zh" data-page-node-id="7BzDLaqhxWWUwKfRVkJVfn">平白咖啡</div><span class="en" data-page-node-id="2rMGFVahPQfTyhUbTX3QRT">Flat White</span><span class="price" data-page-node-id="jzYrlfedytrtm9uZCV6FvD">$27</span></div>
+        <div class="drink" data-page-node-id="Rq8AHndi0Zrjc65zkHUdCI"><div class="zh" data-page-node-id="UEd38IJC8FcOmzEODCGSCN">檸檬紅茶</div><span class="en" data-page-node-id="czwTLAWSyt3WPbT4E336I7">Lemon Black Tea</span><span class="price" data-page-node-id="Do5qs7Zl1GH0yPuf2knolD">$25</span></div>
+        <div class="drink" data-page-node-id="s1NVa06MD40xkLUhfaDIqX"><div class="zh" data-page-node-id="nSnHxXPMv1tRA90BLuonae">洛神花蜜桃氣泡水</div><span class="en" data-page-node-id="6lbcY5qESTQnkU4AtytwQs">Roselle Peach Sparkling Water</span><span class="price" data-page-node-id="bVXrQ8w616C30PQkL8cVYO">$25</span></div>
       </div>
     </div>
 
-    <div class="footer" style="padding-top: 22px;">
-      <div class="badges">
-        <div><span class="leaf">🌿</span>VEGAN</div>
-        <div><span class="moon">☪</span>HALAL</div>
+    <div class="footer" data-page-node-id="icFCdnzNmAVw18U9N039iR">
+      <div class="badges" data-page-node-id="OARWEV7QYjjozIEdOd5I3H">
+        <div data-page-node-id="mbAmdU9bN9T0dBdvggjin8"><span class="leaf" data-page-node-id="LXDBlbgVVMKJMsHkP9a3Yl">🌿</span>VEGAN</div>
+        <div data-page-node-id="tGh4l2AJPl54AAIE92sQpk"><span class="moon" data-page-node-id="M0qm1eSVGGPoACkvd3y5KM">☪</span>HALAL</div>
       </div>
-      <div class="takeaway">
-        <span class="zh">外賣另加 $2</span>
-        <span class="en">TAKEAWAY + $2</span>
+      <div class="takeaway" data-page-node-id="vcEzwF9NgFdEzrSqV1V11c">
+        <span class="zh" data-page-node-id="HUKLIDuRKjYM39SD1f6sEC">外賣另加 $2</span>
+        <span class="en" data-page-node-id="Xn54mYChNNGKmSHfqOZVxa">TAKEAWAY + $2</span>
       </div>
     </div>
+
   </div>
 </section>
 
 <!-- ====================================================== -->
-<!-- 4. BREAKFAST 早餐 -->
+<!-- 4. BREAKFAST -->
 <!-- ====================================================== -->
-<section id="sec-breakfast" class="page" style="margin-top: 28px;">
-  <div class="grain"></div>
-  <div class="container">
+<section id="sec-breakfast" class="page" style="margin-top: 28px;" data-page-node-id="DV65IqHYMOku3PUYb7HS5x">
+  <div class="grain" data-page-node-id="UxQwuMElMjer9Ri1eyywU6"></div>
+  <div class="container" data-page-node-id="mNWoISVThyWZERqctxVcSI">
 
-    <div class="banner">
-      <div class="big">早餐</div>
-      <div class="en">Breakfast</div>
-      <div class="divider">07:30 – 11:00</div>
+    <div class="banner" data-page-node-id="zEVOHo3RryVMl0tBDI7aJP">
+      <div class="big" data-page-node-id="xeInv3LUg5v0gdMM0pZWen">早餐</div>
+      <div class="en" data-page-node-id="6l26xAGFFSCOanJjWsIgi9">Breakfast</div>
+      <div class="divider" data-page-node-id="3t1pRVwonOEfSSCqfmGlLW">07:30 – 11:00</div>
     </div>
 
-    <div class="brand">
-      <img class="logo" src="sora-zen-logo.png" alt="SORA ZEN">
-      <div class="sub">Breakfast &nbsp;|&nbsp; 07:30 – 11:00</div>
+    <div class="brand" data-page-node-id="xrjVFFBthuM7zFTKEn4rhx">
+      <img class="logo" src="sora-zen-logo-cropped.png" alt="SORA ZEN" data-page-node-id="ckLHyGQ4QYUlYRDuuOD12N">
+      <div class="sub" data-page-node-id="hchsrJlvwAmC9urb9tyNMu">BREAKFAST &nbsp;|&nbsp; 07:30 - 11:00</div>
     </div>
 
-    <hr class="thin">
+    <hr class="thin" data-page-node-id="hAsyq0xxQgFV0ixETKeHZi">
 
-    <div class="section-header" style="margin-top: 10px;"><span class="zh">飯</span><span class="en">Rice</span></div>
-    <div class="two-col">
-      <ul class="menu">
-        <li><span class="name">經典早餐 (雞) Classic Breakfast (Chicken)</span><span class="price">$38</span></li>
-        <li><span class="name">經典早餐 (牛) Classic Breakfast (Beef)</span><span class="price">$48</span></li>
+    <div class="three-col" data-page-node-id="8LggFerjPBtJYRvJ8Qxqlt">
+      <ul class="menu" data-page-node-id="XlhlC9Xx1mNEnrmZPy6hCN">
+        <li data-page-node-id="Jt92s9GKgzFhEmksCaBny1"><div class="line" data-page-node-id="xLSnmEzyhRd0YUFVXNjZaU"><span class="zh-name" data-page-node-id="29FsVQN49WlDTh0yJiHAIR">經典早餐 (雞)</span><span class="price" data-page-node-id="JK6plOx1wO2pZzt1EC0J1S">$38</span></div><span class="en-name" data-page-node-id="dgyENAVDW8c0wC1btv83cq">Classic Breakfast (Chicken)</span></li>
+        <li data-page-node-id="HjmhmMQR39P3c0FK6o6V9Q"><div class="line" data-page-node-id="YnSdJABomOq8ryeY1AkDkh"><span class="zh-name" data-page-node-id="pw6g5ndERX0RswgU8zHapF">經典早餐 (牛)</span><span class="price" data-page-node-id="32YtZN554vo6CRO7hszCDE">$48</span></div><span class="en-name" data-page-node-id="hjy8EDg0ipoaAG9hAchJbs">Classic Breakfast (Beef)</span></li>
       </ul>
-      <ul class="menu">
-        <li><span class="name"><span class="leaf">🌿</span>經典素食早餐 Classic Vegetarian Breakfast</span><span class="price">$36</span></li>
-        <li><span class="name">經典早餐 (魚) Classic Breakfast (Fish)</span><span class="price">$58</span></li>
-      </ul>
-    </div>
-
-    <div class="section-header"><span class="zh">三文治</span><span class="en">Sandwich</span></div>
-    <div class="two-col">
-      <ul class="menu">
-        <li><span class="name">煙燻三文魚三文治 Smoked Salmon Sandwich</span><span class="price">$42</span></li>
-        <li><span class="name">吉列雞排三文治 Chicken Katsu Sandwich</span><span class="price">$36</span></li>
-      </ul>
-      <ul class="menu">
-        <li><span class="name"><span class="leaf">🌿</span>牛油果蛋三文治 Avocado Egg Sandwich</span><span class="price">$34</span></li>
-      </ul>
-    </div>
-
-    <div class="section-header"><span class="zh">輕食</span><span class="en">Light &amp; Bowls</span></div>
-    <div class="two-col">
-      <ul class="menu">
-        <li><span class="name">水果優格杯 Fruit Yogurt Cup</span><span class="price">$28</span></li>
-        <li><span class="name">水果燕麥杯 Fruit Oatmeal Cup</span><span class="price">$28</span></li>
-      </ul>
-      <ul class="menu">
-        <li><span class="name"><span class="leaf">🌿</span>田園水果沙律 Garden Fruit Salad</span><span class="price">$30</span></li>
-        <li><span class="name">茶碗蒸 Chawanmushi</span><span class="price">$18</span></li>
-      </ul>
-    </div>
-
-    <hr class="thick">
-
-    <div class="promo">
-      <div class="promo-title">
-        <span class="zh">加配優惠</span>
-        <span class="en">Add-on Promotion</span>
-        <span class="note">轉凍飲加 $2 / +$2 for iced drink</span>
+      <div class="center" data-page-node-id="MGU18RoM6wLvTPmZYK2Bq8">
+        <img src="images/rice.png" alt="Rice" data-page-node-id="lKz1RItIxLpuednTpQQZcr">
+        <div class="label" data-page-node-id="HrpWVGAygoqyItCPyPOccj">RICE</div>
       </div>
-      <div class="drinks">
-        <div class="drink"><div class="zh">黑咖啡</div><div class="en">Black Coffee</div><div class="price">$20</div></div>
-        <div class="drink"><div class="zh">泡沫咖啡</div><div class="en">Cappuccino</div><div class="price">$25</div></div>
-        <div class="drink"><div class="zh">蘋果汁</div><div class="en">Apple Juice</div><div class="price">$27</div></div>
-        <div class="drink"><div class="zh">檸檬西柚氣泡水</div><div class="en">Lemon Grapefruit Sparkling Water</div><div class="price">$27</div></div>
-        <div class="drink"><div class="zh">拿鐵咖啡</div><div class="en">Caffè Latte</div><div class="price">$27</div></div>
-        <div class="drink"><div class="zh">平白咖啡</div><div class="en">Flat White</div><div class="price">$27</div></div>
-        <div class="drink"><div class="zh">檸檬紅茶</div><div class="en">Lemon Black Tea</div><div class="price">$25</div></div>
-        <div class="drink"><div class="zh">洛神花蜜桃氣泡水</div><div class="en">Roselle Peach Sparkling Water</div><div class="price">$25</div></div>
+      <ul class="menu" data-page-node-id="8YWsBq66Gr80knhxb55Pdy">
+        <li data-page-node-id="1VHCqBUANfAmNNnsroF89K"><div class="line" data-page-node-id="huplCE0a6gD2iCNmo5OomQ"><span class="zh-name" data-page-node-id="fpPHnP92PYVoOWLsAEh8pU"><span class="leaf" data-page-node-id="yFy9CQZVxaHzKgr7VrYTBI">🌿</span>經典素食早餐</span><span class="price" data-page-node-id="rhyf3jnmeD2T7G6pUZ6yB4">$36</span></div><span class="en-name" data-page-node-id="gGDThWF7pNcBNN1upmgo1q">Classic Vegetarian Breakfast</span></li>
+        <li data-page-node-id="msTjs80rDQjfpaH4nIZqxB"><div class="line" data-page-node-id="BoG1eJ72iDG90j4ytH0z0o"><span class="zh-name" data-page-node-id="5xT4TAg4eVDb9qtqaSVe7O">經典早餐 (魚)</span><span class="price" data-page-node-id="FEtslKrBPXZ5kh1kJI0b5k">$58</span></div><span class="en-name" data-page-node-id="J8KiVDwxePh6O0sLvsGQFZ">Classic Breakfast (Fish)</span></li>
+      </ul>
+    </div>
+
+    <hr class="thin" data-page-node-id="dG2r0gUG3kqMV6HbFonlU6">
+
+    <div class="three-col" data-page-node-id="4F37WX4CneodGkmlxrq1D1">
+      <ul class="menu" data-page-node-id="3XnAgoKEDFSrecJSkJYI1G">
+        <li data-page-node-id="IKnL6v8Lu5EA3SiSvv2uOa"><div class="line" data-page-node-id="OFjNLkt7OQWbQOZtsH9GW1"><span class="zh-name" data-page-node-id="rxWoDbgOH5Y8aq1gDdnCb6">煙燻三文魚三文治</span><span class="price" data-page-node-id="0wkB2YWH44VcQpBsWk4mZJ">$42</span></div><span class="en-name" data-page-node-id="x0uet4hjBP2TsuT0P0ZLGY">Smoked Salmon Sandwich</span></li>
+        <li data-page-node-id="l6WOT92Ie1aSob9hD3lc97"><div class="line" data-page-node-id="t6xYWPFSpKjmsV5jHYmSSn"><span class="zh-name" data-page-node-id="jT1qyBFuP2ixCFgCzyQvCO">吉列雞排三文治</span><span class="price" data-page-node-id="JODNuPBVo1Zq4nnlpuessY">$36</span></div><span class="en-name" data-page-node-id="yxxw0UUy0MFaBFmLccTfe8">Chicken Katsu Sandwich</span></li>
+      </ul>
+      <div class="center" data-page-node-id="umbcCAnqMN3Hs1xVb44Cm6">
+        <img src="images/sandwich.png" alt="Sandwich" data-page-node-id="PB8qS25EHtn4o8hywJFgez">
+        <div class="label" data-page-node-id="jEAhGxpfydHaDI2IWBRM0w">SANDWICH</div>
+      </div>
+      <ul class="menu" data-page-node-id="g1ARHbztCZ4yw3Yv0niF5a">
+        <li data-page-node-id="T5ZqxFP8IdVnL3SAf0To6r"><div class="line" data-page-node-id="NEaGsb81GM0L7qAMHDYA9d"><span class="zh-name" data-page-node-id="eaHzjfuH4F8n1HThbCotBP"><span class="leaf" data-page-node-id="yXTEPliSgMjwb2N5AEoe5D">🌿</span>牛油果蛋三文治</span><span class="price" data-page-node-id="g516xKKaSrIMHkJrvxCGcN">$34</span></div><span class="en-name" data-page-node-id="0hVLvRbt3Ffv1MS3QUpCqr">Avocado Egg Sandwich</span></li>
+      </ul>
+    </div>
+
+    <hr class="thin" data-page-node-id="E9U9GNtv7uukPM3IWjAZWg">
+
+    <div class="three-col" data-page-node-id="pWMnaVB0OjKChhFo2m6aD5">
+      <ul class="menu" data-page-node-id="cNkcPZL0PGAwphCwfwQ84I">
+        <li data-page-node-id="SyrVPvM7eH54ivCIqu3BFL"><div class="line" data-page-node-id="ilCo5Sz64MUL8tf3UVLct4"><span class="zh-name" data-page-node-id="nkfEwmruMOQW82TrlH7wMf">水果優格杯</span><span class="price" data-page-node-id="FBtWN7hkdYAdAhyWDskafD">$28</span></div><span class="en-name" data-page-node-id="6ANzRV5Gh8hHGAsxovnWdS">Fruit Yogurt Cup</span></li>
+        <li data-page-node-id="zGyNyCqxffbCAzlj4cYwvg"><div class="line" data-page-node-id="QEFP5aR3Y3WIIqprljuuww"><span class="zh-name" data-page-node-id="z8S1eSUt8lwLWDKZJQvAJD">水果燕麥杯</span><span class="price" data-page-node-id="fznXeUFIHGMPhpFvKTEUJW">$28</span></div><span class="en-name" data-page-node-id="N1DGVT06nHpkW8jqUX4xut">Fruit Oatmeal Cup</span></li>
+      </ul>
+      <div class="center" data-page-node-id="CBWyXMDATTQhgs6fpBih66">
+        <img src="images/salad.png" alt="Light &amp; Bowls" style="opacity: 0.95;" data-page-node-id="Ra1qgeB90p3999Dqf3stGK">
+        <div class="label" data-page-node-id="dJFDUeAMwRnIGm4ei1q81c">Light &amp; Bowls</div>
+      </div>
+      <ul class="menu" data-page-node-id="UV4dNFViwv8hg7s0wAYdvB">
+        <li data-page-node-id="d6rWD1xxfMhvXjSJ4XgY9g"><div class="line" data-page-node-id="DENURg4uGAQOSg2KZpxNYH"><span class="zh-name" data-page-node-id="qGXQZ3EicUm2Ixsud3JRUH"><span class="leaf" data-page-node-id="EzZfwVJJCo4yMjwofRzry2">🌿</span>田園水果沙律</span><span class="price" data-page-node-id="CBtI9H5YFBiyUWBerfEVdo">$30</span></div><span class="en-name" data-page-node-id="4pCQ5hyS8nNlHj2b2CRdQz">Garden Fruit Salad</span></li>
+        <li data-page-node-id="gmtxvQFc3z51DNjv1vOBw1"><div class="line" data-page-node-id="IC5nsO4M1Wa0D2GcwPZ0it"><span class="zh-name" data-page-node-id="FILjTOj5BF8BqBjrcQ1ie0">茶碗蒸</span><span class="price" data-page-node-id="AyXyi7t9qUtehBlXwj9ggt">$18</span></div><span class="en-name" data-page-node-id="DPN5j2pSMFURymKm3ZfdP8">Chawanmushi</span></li>
+      </ul>
+    </div>
+
+    <hr class="thin" data-page-node-id="T683mApk0U7atpm4gEm7N7">
+
+    <div class="promo" data-page-node-id="WpRXDy92SogfXK7rDpz7Rc">
+      <div class="promo-head" data-page-node-id="i6vmU0K4q9yu0VYD9E0B8s">
+        <span class="zh" data-page-node-id="3EXPd8lAaQcdfumORJYaeu">加配優惠</span><span class="en" data-page-node-id="kGuOuMmDU0FA4blViuje1n">Add-on Promotion</span>
+        <span class="note" data-page-node-id="t4Fk4rZKJ0LWei96EESwD2">轉凍飲加 $2 / +$2 for iced drink</span>
+      </div>
+      <div class="drinks" data-page-node-id="BESpqLpy9sNScPhrifpZoN">
+        <div class="drink" data-page-node-id="jQYCE1Quz6M1HWHfrqNDIL"><div class="zh" data-page-node-id="nT0PcI5nJ48FmXaPbEZtwS">黑咖啡</div><span class="en" data-page-node-id="XPUpGgl3eoK4BLuWa0ivuZ">Black Coffee</span><span class="price" data-page-node-id="1vnfwvWcorGKLLhOin6wAY">$20</span></div>
+        <div class="drink" data-page-node-id="hnG6vOmsdod5nGZhvU9p6O"><div class="zh" data-page-node-id="Yi9uhXwVB0Ih4N3y55XHG8">泡沫咖啡</div><span class="en" data-page-node-id="2NK4BFNnahUOiCZYr9RNq8">Cappuccino</span><span class="price" data-page-node-id="j2UxYh4pGAaTmPs4PLCmbG">$25</span></div>
+        <div class="drink" data-page-node-id="3WnzcEzqrQjfkciYKBO6YZ"><div class="zh" data-page-node-id="lAFzzeYDWcIBBCNriv3y69">蘋果汁</div><span class="en" data-page-node-id="fRJo8UyC0cCiXWwGJrtkE2">Apple Juice</span><span class="price" data-page-node-id="KckZFcVIVOb9YVdozgpdul">$27</span></div>
+        <div class="drink" data-page-node-id="v7ia0r3FVbTKCgIABEAD7H"><div class="zh" data-page-node-id="Y7IGEgPkW9WMJL8slMTaeL">檸檬西柚氣泡水</div><span class="en" data-page-node-id="1OfGl9dDR4pUExyUG1HRse">Lemon Grapefruit Sparkling Water</span><span class="price" data-page-node-id="03H9TZi6e3OZttXVCDSQu5">$27</span></div>
+        <div class="drink" data-page-node-id="UdbTvZyGjKijsBW7ig6eG7"><div class="zh" data-page-node-id="Jda1Qehv49QO3Fn0AZ378j">拿鐵咖啡</div><span class="en" data-page-node-id="TN645J8eGUkZPb6lpTPjXH">Caffè Latte</span><span class="price" data-page-node-id="cFrOXwlyhZHTQwDoOUd7JJ">$27</span></div>
+        <div class="drink" data-page-node-id="BVrQDVMob1RdEFqQuz1ha9"><div class="zh" data-page-node-id="Sigcxf02rHELxyItDKexCM">平白咖啡</div><span class="en" data-page-node-id="2fImlFMK8ixnvdfGcWj43Q">Flat White</span><span class="price" data-page-node-id="Y4qZuxHxMx3X2455HzXtNk">$27</span></div>
+        <div class="drink" data-page-node-id="ZRzTfBZDnPFtoHFpHJE1VF"><div class="zh" data-page-node-id="darYNmMxFsQlPkGB3sLJU1">檸檬紅茶</div><span class="en" data-page-node-id="15DDubmNfUbggQxCLBvtYf">Lemon Black Tea</span><span class="price" data-page-node-id="4lwS2AWSXgdtyWbG0b95o9">$25</span></div>
+        <div class="drink" data-page-node-id="JED5pwLGIWRpFnMcL5OfO6"><div class="zh" data-page-node-id="tww7ZtEiyeJPiHZIuenws3">洛神花蜜桃氣泡水</div><span class="en" data-page-node-id="wnKRjZ6UHioKVck8Dar9Hm">Roselle Peach Sparkling Water</span><span class="price" data-page-node-id="fUFhAE5nRlZcBQfmHkaTUC">$25</span></div>
       </div>
     </div>
 
-    <div class="footer" style="padding-top: 22px;">
-      <div class="badges">
-        <div><span class="leaf">🌿</span>VEGAN</div>
-        <div><span class="moon">☪</span>HALAL</div>
+    <div class="footer" data-page-node-id="ZX0hwtb2r7qbthEPdLrjyL">
+      <div class="badges" data-page-node-id="W2vEX2hXJue5wBVLH6RH18">
+        <div data-page-node-id="BUBFIuJJaW1XorkXipNRHE"><span class="leaf" data-page-node-id="Zr7ZJ1xzllRQXrFVX3p0Kw">🌿</span>VEGAN</div>
+        <div data-page-node-id="CefiiB39j3RS7ZGBIEnXn1"><span class="moon" data-page-node-id="ADZ3SApbS1kFoHPx0oL6JB">☪</span>HALAL</div>
       </div>
-      <div class="takeaway">
-        <span class="zh">外賣另加 $2</span>
-        <span class="en">TAKEAWAY + $2</span>
+      <div class="takeaway" data-page-node-id="VHRTu8axieBBwRKHEBBrFF">
+        <span class="zh" data-page-node-id="Q8Y3Y436ez3zicTyyWuJfm">外賣另加 $2</span>
+        <span class="en" data-page-node-id="9jVqKAUHNo30m9rC29OOD1">TAKEAWAY + $2</span>
       </div>
     </div>
+
   </div>
 </section>
 
 <!-- ====================================================== -->
-<!-- 5. DINNER 晚餐 -->
+<!-- 5. DINNER -->
 <!-- ====================================================== -->
-<section id="sec-dinner" class="page" style="margin-top: 28px;">
-  <div class="grain"></div>
-  <div class="container">
+<section id="sec-dinner" class="page" style="margin-top: 28px;" data-page-node-id="L3BH9l4KyDi6tdoGWFnEAL">
+  <div class="grain" data-page-node-id="qCHuDmisXJD6oxTHKcVXeE"></div>
+  <div class="container" data-page-node-id="tuZvppbhCOklBZQ4eru84N">
 
-    <div class="banner">
-      <div class="big">晚餐</div>
-      <div class="en">Dinner</div>
-      <div class="divider">17:00 – 19:30</div>
+    <div class="banner" data-page-node-id="V4gSuaeTttkMZsAhlNOkhD">
+      <div class="big" data-page-node-id="dLsgF8SgqMpGHq5ze0BGDR">晚餐</div>
+      <div class="en" data-page-node-id="tCbBggauyoCtPL67qOwCL8">Dinner</div>
+      <div class="divider" data-page-node-id="DwG9Y4TIJS2hR7hG958qMV">17:00 – 19:30</div>
     </div>
 
-    <div class="brand">
-      <img class="logo" src="sora-zen-logo.png" alt="SORA ZEN">
-      <div class="sub">Dinner Menu &nbsp;|&nbsp; 17:00 – 19:30</div>
+    <div class="brand" data-page-node-id="DV6G9V388pGgB2TLJHBLxH">
+      <img class="logo" src="sora-zen-logo-cropped.png" alt="SORA ZEN" data-page-node-id="BC3R6RR1ZXhE9Ti3FkwF73">
+      <div class="sub" data-page-node-id="0WFupvI3BW0Zu3XOcl1txo">Dinner Menu &nbsp;|&nbsp; 17:00 - 19:30</div>
     </div>
 
-    <hr class="thin">
+    <hr class="thin" data-page-node-id="abJWxDEuiWfm5GSnEAeTsc">
 
-    <div class="combo">
-      <div class="combo-title">
-        <span class="zh">加配</span>
-        <span class="en">Combo Add-On:</span>
+    <div class="combo" data-page-node-id="c7qGUdfrRSjsNwH2G2CKbT">
+      <div class="title" data-page-node-id="sL2zXmQbVtYK9nN8wP3rT5">加配 <span class="en" data-page-node-id="fN7KvMywT2bX9c4sQ1nR8m">Combo Add-On:</span></div>
+      <ul data-page-node-id="J9OqCyUmwmAARDoAvual50">
+        <li data-page-node-id="gW2MNdRwkBm4vK4nQyBz8a">生菜沙律 Lettuce Salad <span class="price" data-page-node-id="ZI6t4Nd5ChWFSG8SW8pgHb">$6</span></li>
+        <li data-page-node-id="hLq3PkV8nM7wY2tN6vR4sX">湯 Soup <span class="price" data-page-node-id="MCXKFjQF3pYwgs0mCYiF6C">$6</span></li>
+        <li data-page-node-id="bC9VnK7mM2sX8tQ5nW3zL1">&amp; 茶 Tea <span class="price" data-page-node-id="G7Y9jWbodDLkkS7umBJYcN">$3</span></li>
+        <li data-page-node-id="pT5YwQrZbN8vK3mL9sX2cF">日式咖哩醬 Japanese Curry Sauce <span class="price" data-page-node-id="RrHfaxr18m951teKGF7czu">$12</span></li>
+      </ul>
+    </div>
+
+    <hr class="thin" data-page-node-id="0cLFEJk4fB6IWfYucFx6dO">
+
+    <div class="section-head" data-page-node-id="za3efUfNekf8AzpRVFCeld">
+      <span class="zh" data-page-node-id="JkEih81S306D7cPXmdAOdQ">主食</span><span class="en" data-page-node-id="LCr7BV6H7xrOftW4xArkhA">&nbsp;Mains</span>
+    </div>
+    <div class="underline" data-page-node-id="oYdsFToeBvWDOXkYoq7sQC"></div>
+
+    <div class="three-col" data-page-node-id="aUcRvMNAhhonVGUuCAExGf">
+      <ul class="menu bullet" data-page-node-id="DFnbldHDLDiSZmUbDuNP3m">
+        <li data-page-node-id="E0SO3yvtj6RO4uHRaoc0aZ"><div class="line" data-page-node-id="fok1OiflgrLB2Y0IHBO8pi"><span class="zh-wrap" data-page-node-id="f3PAX5HS6EyelBnBZK0Hpg"><span class="zh-name" data-page-node-id="899LehM3d5T2sDJVwcrxlF">栗子雞肉炊飯丼</span></span><span class="price" data-page-node-id="zxQfZlCsdsLD6bl2qT8or9">$45</span></div><span class="en-name" data-page-node-id="Dbm8O331vP0Ji7QyYGtiKZ">Chestnut Chicken Takiomi Don</span></li>
+        <li data-page-node-id="HVwzR4WL7C8deXh2xIhu2N"><div class="line" data-page-node-id="wUczOjXgP0gipB6MfgkR2t"><span class="zh-wrap" data-page-node-id="HuZpYNrwjA8scrJYwiqQ3v"><span class="zh-name" data-page-node-id="UFPVv5UB9EmVRfmMc2Kssd">焗烤春雞飯</span></span><span class="price" data-page-node-id="sHsoqhmN6mw96dpC9d8DCG">$58</span></div><span class="en-name" data-page-node-id="MRdCVPHRO1EpaJPKQExaBa">Roasted Spring Chicken Rice</span></li>
+        <li data-page-node-id="nBHn0xJbdlBEYPVD4k7k5Q"><div class="line" data-page-node-id="Veiy6GH2k5CYNkLMWPrUo6"><span class="zh-wrap" data-page-node-id="Z6E7AaC3aUgzQ6W3xjIVlH"><span class="leaf" data-page-node-id="1pIDhmM9AIDlWEGhULPwYD">🌿</span><span class="zh-name" data-page-node-id="PkdEwSig7DlY0LGQwQ0vwZ">醬燒菇配溫泉蛋丼飯</span></span><span class="price" data-page-node-id="ONqJlApIAFRhr3cqtDqX1S">$45</span></div><span class="en-name" data-page-node-id="gXlBR3Pvxrpiz3exUfXvVn">Mushrooms with Onsen Egg Donburi</span></li>
+        <li data-page-node-id="z28zZg1AivUIHSQZOnQMIv"><div class="line" data-page-node-id="bwjeOPS1Nod1HXdzP8jAaz"><span class="zh-wrap" data-page-node-id="XJSOZXm5XkrVNwOeqFsgV6"><span class="zh-name" data-page-node-id="J1J0GnpnIKsAHfnIULiWEf">醬燒金針菇肥牛丼飯</span></span><span class="price" data-page-node-id="fPJ2UN1xXuHtxpy7eBq3OY">$62</span></div><span class="en-name" data-page-node-id="aKFxZmUBDw0MWkQtea2evv">Soy-Glazed Beef and Enoki Mushroom Donburi</span></li>
+        <li data-page-node-id="gPtArRIDiUHOrcg6hCuEiR"><div class="line" data-page-node-id="rj57TRdnaMDd33hLYHD44p"><span class="zh-wrap" data-page-node-id="yDmJMdozfVQeopIF8fVWRq"><span class="zh-name" data-page-node-id="U6qM1DMcIXtz5v60D6QyhI">慢烤牛小排丼飯配溫泉蛋</span></span><span class="price" data-page-node-id="umnizTHmFBjcupPhkSqgYn">$78</span></div><span class="en-name" data-page-node-id="2fhhLiq5hMTq62PvvfDjMn">Slow-Roasted Short Rib Donburi with Onsen Egg</span></li>
+      </ul>
+      <div class="center" data-page-node-id="m9rFe3guKFrWO6CjBYUEIl">
+        <img src="images/rice.png" alt="Rice" data-page-node-id="EGychS0APjPGvOq1ppjuSR">
+        <div class="label" data-page-node-id="ZeoQ25gl307zrr21Zresv4">RICE</div>
       </div>
-      <div class="combo-grid">
-        <div>生菜沙律 Lettuce Salad <strong>$6</strong></div>
-        <div>湯 Soup <strong>$6</strong></div>
-        <div>茶 Tea <strong>$3</strong></div>
-        <div>日式咖哩醬 Japanese Curry Sauce <strong>$12</strong></div>
-      </div>
+      <ul class="menu bullet" data-page-node-id="OpquZVrrHSbRgicCXJyXV3">
+        <li data-page-node-id="qnHn8DLSP2Gns7rCzbY9eu"><div class="line" data-page-node-id="u9TEG4zvxuRHtf9oEkdD8J"><span class="zh-wrap" data-page-node-id="V7kNF3IrhegFD4LDn3D3vJ"><span class="zh-name" data-page-node-id="r43fVRJiOWJb68gE1WxThk">秘製唐揚雞肉飯</span></span><span class="price" data-page-node-id="uK2iqi2uawNMF766veHCXx">$52</span></div><span class="en-name" data-page-node-id="B4jW0SFfnEDqOBCFMBKktH">Secret Karaage Chicken Rice</span></li>
+        <li data-page-node-id="JuA8n9RGltgcyhHMGYq77k"><div class="line" data-page-node-id="BhGmhtaZxJbNB3W5nbj1kG"><span class="zh-wrap" data-page-node-id="QAfxsUeKMKVyce9CdDdy3t"><span class="zh-name" data-page-node-id="Z5bcex1axeX1wp8KIntI6d">鹽麴燒挪威三文魚飯</span></span><span class="price" data-page-node-id="OIQ2ut7iqskiCJ7Hnux365">$68</span></div><span class="en-name" data-page-node-id="abzHdHEcuX2EQrIaCrHJX8">Salt-Grilled Norwegian Salmon Rice</span></li>
+        <li data-page-node-id="GyBh3czeH87LILIsP8cBvk"><div class="line" data-page-node-id="jHxk5e48U1m5UFONGLNQNH"><span class="zh-wrap" data-page-node-id="mVyxoC0I1BCZ0yUuJSk6Et"><span class="zh-name" data-page-node-id="7r5ZL9BqWvUA87JCSsu2uc">炙燒封門牛丼飯配溫泉蛋</span></span><span class="price" data-page-node-id="Kso6BZGBkzt0K7zujWSWLr">$72</span></div><span class="en-name" data-page-node-id="UjH7NJ980Y5WvrdbiVo8eO">Seared Hanger Steak Donburi with Onsen Tamago</span></li>
+        <li data-page-node-id="Qrq26KLhWF6HcBVTuIYWc9"><div class="line" data-page-node-id="Z6084aw9P6eDtkKqZmREaU"><span class="zh-wrap" data-page-node-id="fzEoF0M0gYRSP6eFCM004d"><span class="zh-name" data-page-node-id="Vcqe7RU9XWiOpKWpi1psEt">炸蝦野菜天婦羅飯</span></span><span class="price" data-page-node-id="w6X0y8WSv1We6dIXBPxJYU">$68</span></div><span class="en-name" data-page-node-id="7p4wDXFeurnu6fwwSglM9w">Shrimp &amp; Vegetable Tempura Rice</span></li>
+        <li data-page-node-id="XVUw11fygOtqMma7hWHT3D"><div class="line" data-page-node-id="ukCjhRV1xLhmHhcqCrFpFN"><span class="zh-wrap" data-page-node-id="76eu2EBZqvUHsDmjVcJ9Jd"><span class="leaf" data-page-node-id="wEKkoW6UsjDFFVP1HBH6cx">🌿</span><span class="zh-name" data-page-node-id="6tmOvSjXOnMC4Rq81fohCR">炸野菜天婦羅飯</span></span><span class="price" data-page-node-id="03vQqNbNYTz9KGqhV7EMUj">$58</span></div><span class="en-name" data-page-node-id="i9ROXTZzBzG81q1Eo0NiYv">Vegetable Tempura Rice</span></li>
+      </ul>
     </div>
 
-    <div class="section-header"><span class="zh">飯</span><span class="en">Rice</span></div>
-    <ul class="menu" style="padding: 0 22px;">
-      <li><span class="name">栗子雞肉炊飯丼 Chestnut Chicken Takiomi Don</span><span class="price">$45</span></li>
-      <li><span class="name">焗烤春雞飯 Roasted Spring Chicken Rice</span><span class="price">$58</span></li>
-      <li><span class="name"><span class="leaf">🌿</span>醬燒菇配溫泉蛋丼飯 Mushrooms with Onsen Egg Donburi</span><span class="price">$45</span></li>
-      <li><span class="name">醬燒金針菇肥牛丼飯 Soy-Glazed Beef and Enoki Mushroom Donburi</span><span class="price">$62</span></li>
-      <li><span class="name">慢烤牛小排丼飯配溫泉蛋 Slow-Roasted Short Rib Donburi with Onsen Egg</span><span class="price">$78</span></li>
-      <li><span class="name">炙燒封門牛丼飯配溫泉蛋 Seared Hanger Steak Donburi with Onsen Tamago</span><span class="price">$72</span></li>
-      <li><span class="name">秘製唐揚雞肉飯 Secret Karaage Chicken Rice</span><span class="price">$52</span></li>
-      <li><span class="name">鹽麴燒挪威三文魚飯 Salt-Grilled Norwegian Salmon Rice</span><span class="price">$68</span></li>
-      <li><span class="name">炸蝦野菜天婦羅飯 Shrimp &amp; Vegetable Tempura Rice</span><span class="price">$68</span></li>
-      <li><span class="name"><span class="leaf">🌿</span>炸野菜天婦羅飯 Vegetable Tempura Rice</span><span class="price">$58</span></li>
-    </ul>
+    <hr class="thin" data-page-node-id="8qIoKbP1LPVBp2B4iXlTUG">
 
-    <div class="section-header"><span class="zh">火鍋</span><span class="en">Hot Pot</span></div>
-    <ul class="menu" style="padding: 0 22px;">
-      <li><span class="name">雞肉清雞湯鍋 Chicken Clear Soup Hot Pot</span><span class="price">$68</span></li>
-      <li><span class="name">壽喜燒牛肉鍋 Sukiyaki Beef Hot Pot</span><span class="price">$78</span></li>
-      <li><span class="name"><span class="leaf">🌿</span>野菜豆腐豆乳鍋 Vegetable Tofu Soy Milk Hot Pot</span><span class="price">$68</span></li>
-    </ul>
+    <div class="row-with-ill ill-left" data-page-node-id="EUTWMix3yGHkHEFCzj8mGM">
+      <div class="center" data-page-node-id="6QR3PpqTY3bD4Bwx2ZVsz0">
+        <img src="images/hotpot.png" alt="Hot Pot" data-page-node-id="EXD4yWNNFhj0KI3OyTSFq1">
+        <div class="label" data-page-node-id="sfAV9oe7q1uZKE5rg93rAy">HOT POT</div>
+      </div>
+      <ul class="menu bullet" data-page-node-id="OpquZVrrHSbRgicCXJyXV3">
+        <li data-page-node-id="hANQWwNDwgiqEQ7AsJRZYy"><div class="line" data-page-node-id="GnvQ2LWMc7HU5SZrHKTRTl"><span class="zh-wrap" data-page-node-id="RNmh7CoHICq5FD72UIQbXk"><span class="zh-name" data-page-node-id="CB0ReDyGaGWsYwmM601CfP">雞肉清雞湯鍋</span></span><span class="price" data-page-node-id="TzIOAvtakVBJkOSPUb39Hq">$68</span></div><span class="en-name" data-page-node-id="QFmvCmd6J6gKhDujUPn9Ww">Chicken Clear Soup Hot Pot</span></li>
+        <li data-page-node-id="d1AVzPBX5sFYCIUovSsXiq"><div class="line" data-page-node-id="lP5VZ6g5fADHEffZs4p5A4"><span class="zh-wrap" data-page-node-id="E2gH9akuRzYj606SLilBbC"><span class="zh-name" data-page-node-id="CG9CRsCf9nTgKLSKOSNvcp">壽喜燒牛肉鍋</span></span><span class="price" data-page-node-id="fe97ESf49mmkOJCZldAgWd">$78</span></div><span class="en-name" data-page-node-id="6EGnB27zZbxKHHdkY1SoLN">Sukiyaki Beef Hot Pot</span></li>
+        <li data-page-node-id="KahW0cLKa4OMiNCvnbgfdW"><div class="line" data-page-node-id="6h0vdq83UOJ7S7WIZLWHR5"><span class="zh-wrap" data-page-node-id="WW5EhZz4AHwENsWI4kokYz"><span class="leaf" data-page-node-id="DODV8TYnPuvRgVXzFEtycf">🌿</span><span class="zh-name" data-page-node-id="aFw3fgRPSn3UcrAQC5mq07">野菜豆腐豆乳鍋</span></span><span class="price" data-page-node-id="1BxyjQ2WbbDdzVTWArkQAr">$68</span></div><span class="en-name" data-page-node-id="dGvYEAPse7q1I1MzkrZdAj">Vegetable Tofu Soy Milk Hot Pot</span></li>
+      </ul>
+    </div>
 
-    <hr class="thick">
+    <hr class="thin" data-page-node-id="UfguwZJyY6NGjpJ0s8uVwZ">
 
-    <div class="two-col">
-      <div>
-        <div class="section-header" style="margin: 0 0 8px;"><span class="zh">加配選項</span><span class="en">Add-on options</span></div>
-        <ul class="menu">
-          <li><span class="name">吉列炸蝦 Fried Shrimp Cutlet</span><span class="price">$22</span></li>
-          <li><span class="name">吉列炸蠔 Fried Oysters Cutlet</span><span class="price">$26</span></li>
-          <li><span class="name">吉列炸魚 Fried Fish Cutlet</span><span class="price">$20</span></li>
-          <li><span class="name">秘製唐揚雞翼 Secret Karaage Chicken Wings</span><span class="price">$24</span></li>
-          <li><span class="name">秘製唐揚炸雞 Secret Karaage Fried Chicken</span><span class="price">$22</span></li>
-          <li><span class="name">芝麻醬拌秋葵 Okra with Sesame Dressing</span><span class="price">$16</span></li>
-          <li><span class="name">厚燒玉子燒 Thick Japanese Omelet</span><span class="price">$12</span></li>
-          <li><span class="name">溫泉蛋 Onsen Tamago (Soft-Boiled Egg)</span><span class="price">$8</span></li>
+    <div class="two-col" data-page-node-id="wEr8jvOM5kCg5QD9FBYIWM">
+      <div data-page-node-id="H2UwbQp7gKcygAFx0wiXsK">
+        <div class="section-head" data-page-node-id="tVDuQA0vTrNGmn8dEGW79K">
+          <span class="zh" data-page-node-id="QqDW3FvoUWvr0ZcKOiVbAp">加配選項</span><span class="en" data-page-node-id="cd5hcndmVn9p7U9CG2MoXH">&nbsp;Add-on options</span>
+        </div>
+        <div class="underline" data-page-node-id="VGDhOxwUXRyALR5ddF2Mc6"></div>
+        <ul class="menu bullet" data-page-node-id="OGxgnogLTrCBPUi55ySv3C">
+          <li data-page-node-id="HoNvWYa1fkqJiUTwQ45N3R"><div class="line" data-page-node-id="UTwddzXJ6kylJhBMm0WRQu"><span class="zh-wrap" data-page-node-id="XpMvtGDzJwzOoFQzlqP6As"><span class="zh-name" data-page-node-id="3geAHUeqIpMdjltTtwLErs">吉列炸蝦</span></span><span class="price" data-page-node-id="TuD7WOBOATS6EN17OATuro">$22</span></div><span class="en-name" data-page-node-id="Ge8CJeohmqMF8BuFv5LvOe">Fried Shrimp Cutlet</span></li>
+          <li data-page-node-id="MCksH9taSfpxXk4UACr4TZ"><div class="line" data-page-node-id="OcAP9HZ456HFS8rVKXNu0v"><span class="zh-wrap" data-page-node-id="KukMCmfAF2fwYavcH9qH5i"><span class="zh-name" data-page-node-id="jCuXOr0IxP0wISdoOwmgcI">吉列炸蠔</span></span><span class="price" data-page-node-id="QwucWbnYB3PxUV2mFkhxop">$26</span></div><span class="en-name" data-page-node-id="gWmEBfZ697B63E7SeK5LQx">Fried Oysters Cutlet</span></li>
+          <li data-page-node-id="ngNWCvhC8PreEYYcLNdHpm"><div class="line" data-page-node-id="wylLWAsp7Q2ADkigolco7S"><span class="zh-wrap" data-page-node-id="RHD1DLk4vVUcmxJr8jp7Jc"><span class="zh-name" data-page-node-id="gU7Tp1sVJPqtEEOxywrGFR">吉列炸魚</span></span><span class="price" data-page-node-id="fAso9i5wextn7m9EukbSPd">$20</span></div><span class="en-name" data-page-node-id="q0CXoZN9MDFkki9iVmxCMP">Fried Fish Cutlet</span></li>
+          <li data-page-node-id="0bguOBeDBG7l38bx1rR20U"><div class="line" data-page-node-id="wKDShMYewx8sshbDJdYvJB"><span class="zh-wrap" data-page-node-id="AFBWer2zUbWfZP7VKOCiF5"><span class="zh-name" data-page-node-id="Fh2MDQEwVwD7eCw4LirHyU">秘製唐揚雞翼</span></span><span class="price" data-page-node-id="O4ApqUyL6MOswSYClLZJ9d">$24</span></div><span class="en-name" data-page-node-id="VAqXrnzUEFR15awAJVZYJd">Secret Karaage Chicken Wings</span></li>
+          <li data-page-node-id="xmqhNQ6cYE0nzNM6g6jEAi"><div class="line" data-page-node-id="vMe236XAvKsBQKvSyVE6BA"><span class="zh-wrap" data-page-node-id="B9vD1vUKV58lUftJNWP2OW"><span class="zh-name" data-page-node-id="Cz2kzJnzoLhSoW060AoHxR">秘製唐揚炸雞</span></span><span class="price" data-page-node-id="FyG5Fhps1ZyNFtPXktD6Dk">$22</span></div><span class="en-name" data-page-node-id="F8scHQsrG0iNUxGt5aLgkS">Secret Karaage Fried Chicken</span></li>
+          <li data-page-node-id="IBiL8NHcPxe0AZeaCm9DcP"><div class="line" data-page-node-id="UCTtOVf82ffDDvgUFhL1WB"><span class="zh-wrap" data-page-node-id="hFDZFrA1oOJQrUkL2tq2GZ"><span class="leaf" data-page-node-id="CECwmkteZQy13ML2FBIep2">🌿</span><span class="zh-name" data-page-node-id="methiTioQKKpke1Fioszdh">芝麻醬拌秋葵</span></span><span class="price" data-page-node-id="vUEqLlnzOlL5FgzonXIeHE">$16</span></div><span class="en-name" data-page-node-id="1KfwS41lNBMnGMBJ1A74dd">Okra with Sesame Dressing</span></li>
+          <li data-page-node-id="I0omcHwKbna8hX2azH2PQy"><div class="line" data-page-node-id="SiXJoMavwgvd5EkoABFFDr"><span class="zh-wrap" data-page-node-id="gHTzCLmODg8vjByRPBC3XY"><span class="zh-name" data-page-node-id="neoxOITKyGoWSnEZLie21k">厚燒玉子燒</span></span><span class="price" data-page-node-id="DFGDv6uIbyLtaoVm9vqmOH">$12</span></div><span class="en-name" data-page-node-id="NBl0usR3cNTfCRLV1pEdUx">Thick Japanese Omelet</span></li>
+          <li data-page-node-id="Blzqbq6ZwMgau9o21WUtzt"><div class="line" data-page-node-id="FO8IepicakHFh7ChHI81RN"><span class="zh-wrap" data-page-node-id="2XAi0rV4E9Cbi6S8l39V7q"><span class="zh-name" data-page-node-id="HitYMMYTpWaCog2edzjgId">溫泉蛋</span></span><span class="price" data-page-node-id="CQJAaj8XMEBuOWZzBCTir7">$8</span></div><span class="en-name" data-page-node-id="kuF4kjB7BZdC4ZFlFY6c0K">Onsen Tamago (Soft-Boiled Egg)</span></li>
         </ul>
       </div>
-      <div>
-        <div class="section-header" style="margin: 0 0 8px;"><span class="zh">加配優惠</span><span class="en">Add-on Promotion</span></div>
-        <ul class="menu">
-          <li><span class="name">蘋果汁 Apple Juice</span><span class="price">$27</span></li>
-          <li><span class="name">柳橙汁 Orange Juice</span><span class="price">$30</span></li>
-          <li><span class="name">檸檬紅茶 Lemon Black Tea</span><span class="price">$25</span></li>
-          <li><span class="name">蜂蜜檸檬 Honey Lemon</span><span class="price">$27</span></li>
-          <li><span class="name">洛神花蜜桃氣泡水 Roselle Peach Sparkling Water</span><span class="price">$25</span></li>
-          <li><span class="name">檸檬西柚氣泡水 Lemon Grapefruit Sparkling Water</span><span class="price">$27</span></li>
-          <li><span class="name">葡萄烏龍氣泡水 Grape Oolong Sparkling Water</span><span class="price">$27</span></li>
+      <div data-page-node-id="yjZmdxUiyXScEwEXD9yzHs">
+        <div class="section-head" data-page-node-id="Eyx4uo9Zx3XqC1nBTa2n8A">
+          <span class="zh" data-page-node-id="97hQA7jn9EqEb059JEzK7k">加配優惠</span><span class="en" data-page-node-id="N8wfr6qMeEQzhGwLRYSDpn">&nbsp;Add-on Promotion</span>
+        </div>
+        <div class="underline" data-page-node-id="gXHfFOjwweI0ChJ885WAUl"></div>
+        <ul class="menu bullet" data-page-node-id="vjqLZEnliD35tdbfi1pRbW">
+          <li data-page-node-id="uyuHsqvDfnxgPhyM3VYPH8"><div class="line" data-page-node-id="amDJGkEsDX0R3qShv9UQAO"><span class="zh-wrap" data-page-node-id="Cu9h3HQ3vnOVMFapVa5MGT"><span class="zh-name" data-page-node-id="HUsVeMQRL3rLOqNDnHRd9d">蘋果汁</span></span><span class="price" data-page-node-id="X3Kwhf5byBv84Sg6trXoFG">$27</span></div><span class="en-name" data-page-node-id="AWE0Fchlkid2eCyacIowbu">Apple Juice</span></li>
+          <li data-page-node-id="tG6vB1CwaAkl3uq16aOxaF"><div class="line" data-page-node-id="GTIiOlmMu6Z84GRqBj4RIV"><span class="zh-wrap" data-page-node-id="qe21AHdgX7VuuIl1BVTUwC"><span class="zh-name" data-page-node-id="2IQzYEvNvieg247eYzpCsX">柳橙汁</span></span><span class="price" data-page-node-id="VYP2cJxhueUrnGLhaG0dVU">$30</span></div><span class="en-name" data-page-node-id="IlOCM9bqvKEjae9IbAdYZe">Orange Juice</span></li>
+          <li data-page-node-id="zx8OI3KYgemNTD5gv0PZVS"><div class="line" data-page-node-id="bJ42H2eH3mO4wsqad8YiCB"><span class="zh-wrap" data-page-node-id="ektGIWzyMIn43GmAD2n0K1"><span class="zh-name" data-page-node-id="k1iulX7waeNm3QXosZR6Wh">檸檬紅茶</span></span><span class="price" data-page-node-id="ac7GCJqREjQGiNOdGYHc7U">$25</span></div><span class="en-name" data-page-node-id="uidpafws8BA2pYN5mzBsXa">Lemon Black Tea</span></li>
+          <li data-page-node-id="Ou8RFcDyKZLC6EFMI3ewHK"><div class="line" data-page-node-id="hSAE3X01drHoS0g7zJ1Lw9"><span class="zh-wrap" data-page-node-id="RFrOEN34z6g3t21qf76uB6"><span class="zh-name" data-page-node-id="DS64KsGHlPRYHQCZ3WIXDy">蜂蜜檸檬</span></span><span class="price" data-page-node-id="9UB5ll6UZ8ptkMI82ljI0H">$27</span></div><span class="en-name" data-page-node-id="91ZcciCVgjxBwnRddUyhVE">Honey Lemon</span></li>
+          <li data-page-node-id="xfaMi8BefWKecvHJPOWnQA"><div class="line" data-page-node-id="v5bKAVsH287WrFFUg0FtHn"><span class="zh-wrap" data-page-node-id="9jrPrVGbpshNA1siq0v01j"><span class="zh-name" data-page-node-id="dCG9tZM3VCgtaCZRmucnDs">洛神花蜜桃氣泡水</span></span><span class="price" data-page-node-id="BJeiRVDOj3al9SsQkEB07t">$25</span></div><span class="en-name" data-page-node-id="SfEHJvO9bDkexTn0X819ab">Roselle Peach Sparkling Water</span></li>
+          <li data-page-node-id="GsU8eUErqluHBHc14Wu4YC"><div class="line" data-page-node-id="W7ahmm8bUWUoiP96kZZ0W4"><span class="zh-wrap" data-page-node-id="5iX2A8PtU9Hh7Pt5xYsZDC"><span class="zh-name" data-page-node-id="HJanmjsjhjLmOW2qiuu5ge">檸檬西柚氣泡水</span></span><span class="price" data-page-node-id="1qE8C5V1zeH2JdWEddlaHy">$27</span></div><span class="en-name" data-page-node-id="Yk6JFWNinQhcPrW4z5OIK1">Lemon Grapefruit Sparkling Water</span></li>
+          <li data-page-node-id="WOIgQ528cjPrs8M5C5xlvb"><div class="line" data-page-node-id="osbJyuFGt6Dp8vltr8VFVx"><span class="zh-wrap" data-page-node-id="nJwH87JDQMPmLmqr6NCXR4"><span class="zh-name" data-page-node-id="BXD5AYA1dg6W0zAp1PM7oK">葡萄烏龍氣泡水</span></span><span class="price" data-page-node-id="NpkFlwChITsUamPAS22IbU">$27</span></div><span class="en-name" data-page-node-id="NANoZ4LeBZlfm8NAlWJCWc">Grape Oolong Sparkling Water</span></li>
         </ul>
       </div>
     </div>
 
-    <div class="footer" style="padding-top: 26px;">
-      <div class="badges">
-        <div><span class="leaf">🌿</span>VEGAN</div>
-        <div><span class="moon">☪</span>HALAL</div>
+    <div class="footer" data-page-node-id="FOOTER-DINNER">
+      <div class="badges" data-page-node-id="FOOTER-BADGES">
+        <div data-page-node-id="B1"><span class="leaf" data-page-node-id="B1-LEAF">🌿</span>VEGAN</div>
+        <div data-page-node-id="B2"><span class="moon" data-page-node-id="B2-MOON">☪</span>HALAL</div>
       </div>
-      <div class="takeaway">
-        <span class="zh">外賣另加 $2</span>
-        <span class="en">TAKEAWAY + $2</span>
+      <div class="takeaway" data-page-node-id="FOOTER-TAKEAWAY">
+        <span class="zh" data-page-node-id="TZ">外賣另加 $2</span>
+        <span class="en" data-page-node-id="TE">TAKEAWAY + $2</span>
       </div>
     </div>
+
+    <div class="address" data-page-node-id="FOOTER-ADDRESS">
+      <div class="zh" data-page-node-id="ADDR-ZH">香港中文大學 — 范克廉樓低層 (BFCLG-SORAZEN)</div>
+      <div class="en" data-page-node-id="ADDR-EN">The Chinese University of Hong Kong — Benjamin Franklin Centre, Lower Ground (BFC LG - SORAZEN)</div>
+    </div>
+
   </div>
 </section>
 
 <!-- Bottom spacing -->
-<div style="height: 40px;"></div>
+<div style="height: 40px;" data-page-node-id="UBwgcDJSvDR7JWIFG2VtUq"></div>
 
 <script>
-  // Highlight active nav button based on scroll position
   const nav = document.getElementById('topnav');
   const links = nav.querySelectorAll('a');
   const sections = ['sec-lunch','sec-salad','sec-tea','sec-breakfast','sec-dinner']
     .map(id => document.getElementById(id));
-
   function updateActive() {
     const y = window.scrollY + 120;
     let active = 0;
